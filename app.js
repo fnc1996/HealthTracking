@@ -52,6 +52,14 @@ const translations = {
     'workouts.confirmDeleteSession': 'Delete this workout session?',
     'workouts.confirmDeleteExercise': 'Delete this exercise? Past workout entries referencing it will show as "(deleted exercise)".',
     'workouts.deletedExercise': '(deleted exercise)',
+    'workouts.managePlansBtn': 'Manage workout plans', 'workouts.managePlansTitle': 'Manage workout plans',
+    'workouts.managePlansHint': "Group your regular exercises into a plan (e.g. \"Push day\", \"Leg day\") — pick it when logging a workout and its exercises fill in automatically.",
+    'workouts.newPlanLabel': 'New plan name', 'workouts.newPlanPlaceholder': 'e.g. Push day, Leg day, Full body A',
+    'workouts.emptyPlansManager': 'No plans yet.', 'workouts.planExercisesLabel': 'Exercises in this plan',
+    'workouts.addExerciseToPlan': '+ Add exercise', 'workouts.confirmDeletePlan': 'Delete this plan? Past workouts stay unaffected.',
+    'workouts.usePlanLabel': 'Start from a plan (optional)', 'workouts.usePlanNone': '— Custom, pick exercises myself —',
+    'workouts.usePlanConfirm': 'Replace the current exercise list with this plan\'s exercises?',
+    'workouts.noExercisesToAddToPlan': 'Add exercises first (Manage exercises) before building a plan.',
 
     'diet.heading': 'Diet', 'diet.manageFoodsBtn': 'Manage foods & prices', 'diet.logMealBtn': '+ Log meal',
     'diet.dailyCost': 'Daily cost', 'diet.dailyCalories': 'Daily calories', 'diet.mealHistory': 'Meal history',
@@ -62,6 +70,8 @@ const translations = {
     'diet.manageFoodsHint': "Set the price per kilo for each food once — it's reused automatically every time you log a meal with it. Calories and macros (g per 100g) are optional but carry over the same way.",
     'diet.emptyFoodsManager': 'No foods yet', 'diet.newFoodLabel': 'New food name',
     'diet.newFoodPlaceholder': 'e.g. Chicken breast, Rice, Olive oil', 'diet.addFoodBtn': '+ Add food',
+    'diet.searchFoodsPlaceholder': 'Search foods…', 'diet.noFoodsMatchSearch': 'No foods match your search.',
+    'diet.newFoodSectionTitle': 'Add a new food',
     'diet.priceLabel': 'Price / kg ({c})', 'diet.kcalLabel': 'Kcal / 100g (optional)', 'diet.proteinLabel': 'Protein /100g',
     'diet.carbsLabel': 'Carbs /100g', 'diet.fatLabel': 'Fat /100g',
     'diet.addFoodFirstTitle': 'Add a food first',
@@ -172,6 +182,14 @@ const translations = {
     'workouts.confirmDeleteSession': 'Eliminar esta sessão de treino?',
     'workouts.confirmDeleteExercise': 'Eliminar este exercício? Os treinos passados que o referenciam vão mostrar "(exercício eliminado)".',
     'workouts.deletedExercise': '(exercício eliminado)',
+    'workouts.managePlansBtn': 'Gerir planos de treino', 'workouts.managePlansTitle': 'Gerir planos de treino',
+    'workouts.managePlansHint': 'Agrupa os teus exercícios habituais num plano (ex: "Dia de peito", "Dia de pernas") — escolhe-o ao registar um treino e os exercícios preenchem-se sozinhos.',
+    'workouts.newPlanLabel': 'Nome do novo plano', 'workouts.newPlanPlaceholder': 'ex: Dia de peito, Dia de pernas, Full body A',
+    'workouts.emptyPlansManager': 'Ainda sem planos.', 'workouts.planExercisesLabel': 'Exercícios deste plano',
+    'workouts.addExerciseToPlan': '+ Adicionar exercício', 'workouts.confirmDeletePlan': 'Eliminar este plano? Os treinos passados não são afetados.',
+    'workouts.usePlanLabel': 'Começar a partir de um plano (opcional)', 'workouts.usePlanNone': '— Personalizado, escolho os exercícios —',
+    'workouts.usePlanConfirm': 'Substituir a lista de exercícios atual pelos deste plano?',
+    'workouts.noExercisesToAddToPlan': 'Adiciona exercícios primeiro (Gerir exercícios) antes de criar um plano.',
 
     'diet.heading': 'Dieta', 'diet.manageFoodsBtn': 'Gerir alimentos e preços', 'diet.logMealBtn': '+ Nova refeição',
     'diet.dailyCost': 'Custo diário', 'diet.dailyCalories': 'Calorias diárias', 'diet.mealHistory': 'Histórico de refeições',
@@ -182,6 +200,8 @@ const translations = {
     'diet.manageFoodsHint': 'Define o preço por quilo de cada alimento uma vez — é reutilizado automaticamente sempre que o registares numa refeição. Calorias e macros (g por 100g) são opcionais mas funcionam da mesma forma.',
     'diet.emptyFoodsManager': 'Ainda sem alimentos', 'diet.newFoodLabel': 'Nome do novo alimento',
     'diet.newFoodPlaceholder': 'ex: Peito de frango, Arroz, Azeite', 'diet.addFoodBtn': '+ Adicionar alimento',
+    'diet.searchFoodsPlaceholder': 'Procurar alimentos…', 'diet.noFoodsMatchSearch': 'Nenhum alimento corresponde à pesquisa.',
+    'diet.newFoodSectionTitle': 'Adicionar um novo alimento',
     'diet.priceLabel': 'Preço / kg ({c})', 'diet.kcalLabel': 'Kcal / 100g (opcional)', 'diet.proteinLabel': 'Proteína /100g',
     'diet.carbsLabel': 'Carboidratos /100g', 'diet.fatLabel': 'Gordura /100g',
     'diet.addFoodFirstTitle': 'Adiciona primeiro um alimento',
@@ -279,6 +299,7 @@ function defaultState() {
     settings: { currency: lang === 'pt' ? '€' : '$', theme: 'auto', language: lang },
     bodyMetrics: [],   // {id, date, weight, bodyFat, measurements:{}, notes}
     exercises: [],     // {id, name}
+    workoutPlans: [],   // {id, name, exerciseIds:[id,...]}
     workouts: [],       // {id, date, durationMin, notes, entries:[{exerciseId, sets:[{reps,weight}]}]}
     foods: [],          // {id, name, pricePerKg, kcalPer100g, proteinPer100g, carbsPer100g, fatPer100g}
     meals: [],           // {id, date, name, items:[{foodId, grams}], notes}
@@ -842,7 +863,7 @@ function renderWorkouts() {
   const select = document.getElementById('exerciseProgressSelect');
   const prevVal = select.value;
   select.innerHTML = state.exercises.length
-    ? state.exercises.map(e => `<option value="${e.id}">${escapeHtml(e.name)}</option>`).join('')
+    ? [...state.exercises].sort((a, b) => a.name.localeCompare(b.name, locale())).map(e => `<option value="${e.id}">${escapeHtml(e.name)}</option>`).join('')
     : `<option value="">${t('workouts.noExercisesOption')}</option>`;
   if (prevVal && state.exercises.some(e => e.id === prevVal)) select.value = prevVal;
 
@@ -936,6 +957,101 @@ function renderExerciseManagerModal() {
   }));
 }
 
+function planById(id) { return state.workoutPlans.find(p => p.id === id); }
+
+document.getElementById('btnManagePlans').addEventListener('click', () => renderWorkoutPlanManagerModal());
+
+function renderWorkoutPlanManagerModal() {
+  if (!state.exercises.length) {
+    openModal(t('workouts.addExerciseFirstTitle'), `
+      <p class="hint">${t('workouts.noExercisesToAddToPlan')}</p>
+      <div class="modal-foot"><button class="btn primary" id="goExBtn2">${t('workouts.manageExercisesBtn')}</button></div>
+    `);
+    document.getElementById('goExBtn2').addEventListener('click', () => { closeModal(); openExerciseManager(); });
+    return;
+  }
+
+  const rows = state.workoutPlans.map(p => {
+    const exIds = p.exerciseIds || [];
+    const chips = exIds.map(exId => `
+      <span class="chip">
+        ${escapeHtml(exerciseName(exId))}
+        <button type="button" class="chip-remove" data-plan-ex-remove="${exId}" data-plan-id="${p.id}">✕</button>
+      </span>
+    `).join('');
+    const availableExercises = state.exercises.filter(e => !exIds.includes(e.id));
+    return `
+      <div class="exercise-block">
+        <div class="exercise-block-head">
+          <input type="text" class="input" data-planname="${p.id}" value="${escapeHtml(p.name)}" style="border:none;background:transparent;padding:0;font-weight:600;flex:1;min-width:0;">
+          <button class="icon-btn" data-delplan="${p.id}" title="${t('common.delete')}">🗑</button>
+        </div>
+        <label style="display:block;font-size:11.5px;font-weight:600;color:var(--text-muted);margin:8px 0 6px;">${t('workouts.planExercisesLabel')}</label>
+        <div class="chip-row">${chips}</div>
+        ${availableExercises.length ? `
+          <div class="plan-add-row">
+            <select class="select" data-plan-add-select="${p.id}">
+              ${availableExercises.map(e => `<option value="${e.id}">${escapeHtml(e.name)}</option>`).join('')}
+            </select>
+            <button type="button" class="btn small" data-plan-add-btn="${p.id}">${t('workouts.addExerciseToPlan')}</button>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }).join('');
+
+  openModal(t('workouts.managePlansTitle'), `
+    <p class="hint">${t('workouts.managePlansHint')}</p>
+    <div id="planList" style="margin-bottom:14px;">${rows || emptyState(t('workouts.emptyPlansManager'))}</div>
+    <div class="field-row">
+      <div class="field" style="grid-column:1/3;"><label>${t('workouts.newPlanLabel')}</label><input type="text" id="newPlanName" placeholder="${t('workouts.newPlanPlaceholder')}"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" id="closePlanBtn">${t('common.done')}</button>
+      <button class="btn primary" id="addPlanBtn">${t('workouts.addBtn')}</button>
+    </div>
+  `, { keepScroll: true });
+
+  document.getElementById('closePlanBtn').addEventListener('click', () => { closeModal(); renderWorkouts(); });
+  document.getElementById('addPlanBtn').addEventListener('click', () => {
+    const input = document.getElementById('newPlanName');
+    const name = input.value.trim();
+    if (!name) { toast(t('workouts.errEnterName')); return; }
+    state.workoutPlans.push({ id: uid(), name, exerciseIds: [] });
+    saveState();
+    renderWorkoutPlanManagerModal();
+  });
+  document.querySelectorAll('[data-planname]').forEach(inp => inp.addEventListener('change', () => {
+    const p = planById(inp.dataset.planname); if (p && inp.value.trim()) { p.name = inp.value.trim(); saveState(); }
+  }));
+  document.querySelectorAll('[data-delplan]').forEach(b => b.addEventListener('click', () => {
+    confirmAction(t('workouts.confirmDeletePlan'), () => {
+      state.workoutPlans = state.workoutPlans.filter(p => p.id !== b.dataset.delplan);
+      saveState();
+      renderWorkoutPlanManagerModal();
+    });
+  }));
+  document.querySelectorAll('[data-plan-add-btn]').forEach(b => b.addEventListener('click', () => {
+    const planId = b.dataset.planAddBtn;
+    const sel = document.querySelector(`[data-plan-add-select="${planId}"]`);
+    const p = planById(planId);
+    if (p && sel && sel.value) {
+      p.exerciseIds = p.exerciseIds || [];
+      if (!p.exerciseIds.includes(sel.value)) p.exerciseIds.push(sel.value);
+      saveState();
+      renderWorkoutPlanManagerModal();
+    }
+  }));
+  document.querySelectorAll('[data-plan-ex-remove]').forEach(b => b.addEventListener('click', () => {
+    const p = planById(b.dataset.planId);
+    if (p) {
+      p.exerciseIds = (p.exerciseIds || []).filter(exId => exId !== b.dataset.planExRemove);
+      saveState();
+      renderWorkoutPlanManagerModal();
+    }
+  }));
+}
+
 document.getElementById('btnAddWorkout').addEventListener('click', () => openWorkoutForm());
 
 function openWorkoutForm(id) {
@@ -952,7 +1068,8 @@ function openWorkoutForm(id) {
   }
 
   function exerciseOptionsHtml(selectedId) {
-    return state.exercises.map(e => `<option value="${e.id}" ${e.id === selectedId ? 'selected' : ''}>${escapeHtml(e.name)}</option>`).join('');
+    return [...state.exercises].sort((a, b) => a.name.localeCompare(b.name, locale()))
+      .map(e => `<option value="${e.id}" ${e.id === selectedId ? 'selected' : ''}>${escapeHtml(e.name)}</option>`).join('');
   }
 
   function setsHtml(entry, entryIdx) {
@@ -979,8 +1096,22 @@ function openWorkoutForm(id) {
     `).join('');
   }
 
+  function planPickerHtml() {
+    if (existing || !state.workoutPlans.length) return '';
+    return `
+      <div class="field">
+        <label>${t('workouts.usePlanLabel')}</label>
+        <select class="select" id="fPlan" style="width:100%;">
+          <option value="">${t('workouts.usePlanNone')}</option>
+          ${state.workoutPlans.map(p => `<option value="${p.id}">${escapeHtml(p.name)}</option>`).join('')}
+        </select>
+      </div>
+    `;
+  }
+
   function render() {
     openModal(existing ? t('workouts.editTitle') : t('workouts.logTitle'), `
+      ${planPickerHtml()}
       <div class="field-row">
         <div class="field"><label>${t('common.date')}</label><input type="date" id="fDate" value="${draft.date}" max="${todayStr()}"></div>
         <div class="field"><label>${t('workouts.durationLabel')}</label><input type="number" id="fDuration" value="${draft.durationMin}"></div>
@@ -998,6 +1129,19 @@ function openWorkoutForm(id) {
 
   function wire() {
     document.getElementById('cancelBtn').addEventListener('click', closeModal);
+    const planSel = document.getElementById('fPlan');
+    if (planSel) planSel.addEventListener('change', () => {
+      const plan = planById(planSel.value);
+      if (!plan) return;
+      syncFieldsIntoDraft();
+      const hasData = draft.entries.some(e => (e.sets || []).some(s => s.weight || s.reps));
+      if (hasData && !confirm(t('workouts.usePlanConfirm'))) { planSel.value = ''; return; }
+      draft.entries = (plan.exerciseIds && plan.exerciseIds.length ? plan.exerciseIds : [state.exercises[0].id])
+        .filter(exId => state.exercises.some(e => e.id === exId))
+        .map(exId => ({ exerciseId: exId, sets: [{ weight: '', reps: '' }] }));
+      if (draft.entries.length === 0) draft.entries.push({ exerciseId: state.exercises[0].id, sets: [{ weight: '', reps: '' }] });
+      render();
+    });
     document.getElementById('addEntryBtn').addEventListener('click', () => {
       draft.entries.push({ exerciseId: state.exercises[0].id, sets: [{ weight: '', reps: '' }] });
       syncFieldsIntoDraft();
@@ -1154,11 +1298,62 @@ function renderDiet() {
 
 document.getElementById('btnManageFoods').addEventListener('click', renderFoodManagerModal);
 
+let foodManagerSearch = '';
+
 function renderFoodManagerModal() {
-  const rows = state.foods.map(f => `
+  openModal(t('diet.manageFoodsTitle'), `
+    <p class="hint">${t('diet.manageFoodsHint')}</p>
+    ${state.foods.length > 5 ? `<input type="text" class="input" id="foodSearch" placeholder="${t('diet.searchFoodsPlaceholder')}" value="${escapeHtml(foodManagerSearch)}" style="margin-bottom:10px;">` : ''}
+    <div id="foodList" style="margin-bottom:14px;"></div>
+    <div class="exercise-block" style="background:var(--surface-3);">
+      <label style="display:block;font-size:11.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:8px;">${t('diet.newFoodSectionTitle')}</label>
+      <input type="text" class="input" id="newFoodName" placeholder="${t('diet.newFoodPlaceholder')}" style="margin-bottom:10px;">
+      <div class="field-row">
+        <div class="field"><label>${t('diet.priceLabel', { c: state.settings.currency })}</label><input type="number" step="0.01" class="input" id="newFoodPrice"></div>
+        <div class="field"><label>${t('diet.kcalLabel')}</label><input type="number" step="1" class="input" id="newFoodKcal"></div>
+      </div>
+      <div class="field-row" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="field"><label>${t('diet.proteinLabel')}</label><input type="number" step="0.1" class="input" id="newFoodProtein"></div>
+        <div class="field"><label>${t('diet.carbsLabel')}</label><input type="number" step="0.1" class="input" id="newFoodCarbs"></div>
+        <div class="field"><label>${t('diet.fatLabel')}</label><input type="number" step="0.1" class="input" id="newFoodFat"></div>
+      </div>
+      <button class="btn primary" id="addFoodBtn" style="width:100%;margin-top:6px;">${t('diet.addFoodBtn')}</button>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" id="closeFoodBtn">${t('common.done')}</button>
+    </div>
+  `, { keepScroll: true });
+
+  wireFoodList();
+
+  document.getElementById('closeFoodBtn').addEventListener('click', () => { closeModal(); renderDiet(); });
+  const searchEl = document.getElementById('foodSearch');
+  if (searchEl) searchEl.addEventListener('input', () => { foodManagerSearch = searchEl.value; wireFoodList(); });
+  document.getElementById('addFoodBtn').addEventListener('click', () => {
+    const name = document.getElementById('newFoodName').value.trim();
+    if (!name) { toast(t('diet.errEnterFoodName')); return; }
+    const num = id => { const v = document.getElementById(id).value; return v === '' ? null : parseFloat(v); };
+    state.foods.push({
+      id: uid(), name,
+      pricePerKg: num('newFoodPrice'), kcalPer100g: num('newFoodKcal'),
+      proteinPer100g: num('newFoodProtein'), carbsPer100g: num('newFoodCarbs'), fatPer100g: num('newFoodFat')
+    });
+    saveState();
+    renderFoodManagerModal();
+  });
+}
+
+function wireFoodList() {
+  const q = foodManagerSearch.trim().toLowerCase();
+  const filtered = state.foods
+    .filter(f => f.name.toLowerCase().includes(q))
+    .sort((a, b) => a.name.localeCompare(b.name, locale()));
+
+  const listEl = document.getElementById('foodList');
+  listEl.innerHTML = filtered.map(f => `
     <div class="exercise-block">
       <div class="exercise-block-head">
-        <input type="text" class="input" data-fname="${f.id}" value="${escapeHtml(f.name)}" style="border:none;background:transparent;padding:0;font-weight:600;flex:1;">
+        <input type="text" class="input" data-fname="${f.id}" value="${escapeHtml(f.name)}" style="border:none;background:transparent;padding:0;font-weight:600;flex:1;min-width:0;">
         <button class="icon-btn" data-delfood="${f.id}" title="${t('common.delete')}">🗑</button>
       </div>
       <div class="field-row">
@@ -1171,51 +1366,31 @@ function renderFoodManagerModal() {
         <div class="field"><label>${t('diet.fatLabel')}</label><input type="number" step="0.1" class="input" data-ffat="${f.id}" value="${f.fatPer100g != null ? f.fatPer100g : ''}"></div>
       </div>
     </div>
-  `).join('');
-  openModal(t('diet.manageFoodsTitle'), `
-    <p class="hint">${t('diet.manageFoodsHint')}</p>
-    <div id="foodList" style="margin-bottom:8px;">${rows || emptyState(t('diet.emptyFoodsManager'))}</div>
-    <div class="field-row">
-      <div class="field" style="grid-column:1/3;"><label>${t('diet.newFoodLabel')}</label><input type="text" id="newFoodName" placeholder="${t('diet.newFoodPlaceholder')}"></div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn" id="closeFoodBtn">${t('common.done')}</button>
-      <button class="btn primary" id="addFoodBtn">${t('diet.addFoodBtn')}</button>
-    </div>
-  `, { keepScroll: true });
+  `).join('') || emptyState(state.foods.length ? t('diet.noFoodsMatchSearch') : t('diet.emptyFoodsManager'));
 
-  document.getElementById('closeFoodBtn').addEventListener('click', () => { closeModal(); renderDiet(); });
-  document.getElementById('addFoodBtn').addEventListener('click', () => {
-    const input = document.getElementById('newFoodName');
-    const name = input.value.trim();
-    if (!name) { toast(t('diet.errEnterFoodName')); return; }
-    state.foods.push({ id: uid(), name, pricePerKg: null, kcalPer100g: null, proteinPer100g: null, carbsPer100g: null, fatPer100g: null });
-    saveState();
-    renderFoodManagerModal();
-  });
-  document.querySelectorAll('[data-fname]').forEach(inp => inp.addEventListener('change', () => {
+  listEl.querySelectorAll('[data-fname]').forEach(inp => inp.addEventListener('change', () => {
     const f = foodById(inp.dataset.fname); if (f && inp.value.trim()) { f.name = inp.value.trim(); saveState(); }
   }));
-  document.querySelectorAll('[data-fprice]').forEach(inp => inp.addEventListener('change', () => {
+  listEl.querySelectorAll('[data-fprice]').forEach(inp => inp.addEventListener('change', () => {
     const f = foodById(inp.dataset.fprice); if (f) { f.pricePerKg = inp.value === '' ? null : parseFloat(inp.value); saveState(); }
   }));
-  document.querySelectorAll('[data-fkcal]').forEach(inp => inp.addEventListener('change', () => {
+  listEl.querySelectorAll('[data-fkcal]').forEach(inp => inp.addEventListener('change', () => {
     const f = foodById(inp.dataset.fkcal); if (f) { f.kcalPer100g = inp.value === '' ? null : parseFloat(inp.value); saveState(); }
   }));
-  document.querySelectorAll('[data-fprotein]').forEach(inp => inp.addEventListener('change', () => {
+  listEl.querySelectorAll('[data-fprotein]').forEach(inp => inp.addEventListener('change', () => {
     const f = foodById(inp.dataset.fprotein); if (f) { f.proteinPer100g = inp.value === '' ? null : parseFloat(inp.value); saveState(); }
   }));
-  document.querySelectorAll('[data-fcarbs]').forEach(inp => inp.addEventListener('change', () => {
+  listEl.querySelectorAll('[data-fcarbs]').forEach(inp => inp.addEventListener('change', () => {
     const f = foodById(inp.dataset.fcarbs); if (f) { f.carbsPer100g = inp.value === '' ? null : parseFloat(inp.value); saveState(); }
   }));
-  document.querySelectorAll('[data-ffat]').forEach(inp => inp.addEventListener('change', () => {
+  listEl.querySelectorAll('[data-ffat]').forEach(inp => inp.addEventListener('change', () => {
     const f = foodById(inp.dataset.ffat); if (f) { f.fatPer100g = inp.value === '' ? null : parseFloat(inp.value); saveState(); }
   }));
-  document.querySelectorAll('[data-delfood]').forEach(b => b.addEventListener('click', () => {
+  listEl.querySelectorAll('[data-delfood]').forEach(b => b.addEventListener('click', () => {
     confirmAction(t('diet.confirmDeleteFood'), () => {
       state.foods = state.foods.filter(f => f.id !== b.dataset.delfood);
       saveState();
-      renderFoodManagerModal();
+      wireFoodList();
     });
   }));
 }
@@ -1236,7 +1411,8 @@ function openMealForm(id) {
   }
 
   function foodOptionsHtml(selectedId) {
-    return state.foods.map(f => `<option value="${f.id}" ${f.id === selectedId ? 'selected' : ''}>${escapeHtml(f.name)}</option>`).join('');
+    return [...state.foods].sort((a, b) => a.name.localeCompare(b.name, locale()))
+      .map(f => `<option value="${f.id}" ${f.id === selectedId ? 'selected' : ''}>${escapeHtml(f.name)}</option>`).join('');
   }
 
   function itemsHtml() {
