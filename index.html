@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Evolve — Training & Diet Tracker</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💪</text></svg>" />
+<link rel="manifest" href="manifest.json" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Evolve" />
+<meta name="theme-color" content="#fcfcfb" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#1a1a19" media="(prefers-color-scheme: dark)" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <div class="sidebar">
+  <!-- Top bar (mobile) / Sidebar header (desktop) -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">💪</span>
+      <span class="brand-name">Evolve</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" data-i18n-title="theme.toggle" title="Toggle theme" aria-label="Toggle theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </header>
+
+  <nav class="tabbar" id="tabbar" aria-label="Primary">
+    <button class="tab-btn active" data-tab="dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+      <span data-i18n="nav.dashboard">Dashboard</span>
+    </button>
+    <button class="tab-btn" data-tab="body">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v6M9 22l1.5-8M15 22l-1.5-8M8 12l-3 3M16 12l3 3"/></svg>
+      <span data-i18n="nav.body">Body</span>
+    </button>
+    <button class="tab-btn" data-tab="workouts">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5l11 11M4 8l3-3 2 2-3 3-2-2zM15 17l3-3 2 2-3 3-2-2zM2 10l2-2M20 16l2-2"/></svg>
+      <span data-i18n="nav.workouts">Workouts</span>
+    </button>
+    <button class="tab-btn" data-tab="diet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 2v20M4 2v7a3 3 0 003 3 3 3 0 003-3V2M17 2c-2 0-3 2-3 5s1 5 3 5v10"/></svg>
+      <span data-i18n="nav.diet">Diet</span>
+    </button>
+    <button class="tab-btn" data-tab="supplements">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="3"/><path d="M4 13h16"/><path d="M9 4h6a2 2 0 012 2v4H7V6a2 2 0 012-2z"/></svg>
+      <span data-i18n="nav.supplements">Supplements</span>
+    </button>
+    <button class="tab-btn" data-tab="gallery">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span data-i18n="nav.photos">Photos</span>
+    </button>
+    <button class="tab-btn" data-tab="summary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="M8 13h2M8 17h2M14 13h2M14 17h2"/></svg>
+      <span data-i18n="nav.summary">Summary</span>
+    </button>
+    <button class="tab-btn" data-tab="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>
+      <span data-i18n="nav.settings">Settings</span>
+    </button>
+  </nav>
+  </div>
+
+  <main class="content" id="content">
+
+    <!-- DASHBOARD -->
+    <section class="panel" id="panel-dashboard" data-panel="dashboard">
+      <div class="panel-head">
+        <h1 data-i18n="dash.heading">Dashboard</h1>
+        <p class="sub" id="todayLabel"></p>
+      </div>
+      <div class="stat-grid" id="statGrid"></div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="dash.weightTrend">Weight trend</h2></div>
+          <div id="dashWeightChart" class="chart-slot"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="dash.dietCostChart">Diet cost (last 14 days)</h2></div>
+          <div id="dashCostChart" class="chart-slot"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="dash.recentActivity">Recent activity</h2></div>
+        <div id="dashRecent" class="recent-list"></div>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section class="panel hidden" id="panel-body" data-panel="body">
+      <div class="panel-head">
+        <h1 data-i18n="body.heading">Body metrics</h1>
+        <button class="btn primary" id="btnAddBody" data-i18n="body.logEntryBtn">+ Log entry</button>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="body.weightEvolution">Weight evolution</h2></div>
+        <div id="bodyWeightChart" class="chart-slot"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="body.history">History</h2></div>
+        <div class="table-wrap"><table id="bodyTable"><thead></thead><tbody></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- WORKOUTS -->
+    <section class="panel hidden" id="panel-workouts" data-panel="workouts">
+      <div class="panel-head">
+        <h1 data-i18n="workouts.heading">Workouts</h1>
+        <div class="head-actions">
+          <button class="btn" id="btnManageExercises" data-i18n="workouts.manageExercisesBtn">Manage exercises</button>
+          <button class="btn primary" id="btnAddWorkout" data-i18n="workouts.logWorkoutBtn">+ Log workout</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2 data-i18n="workouts.progressByExercise">Progress by exercise</h2>
+          <select id="exerciseProgressSelect" class="select"></select>
+        </div>
+        <div id="exerciseProgressChart" class="chart-slot"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="workouts.sessionHistory">Session history</h2></div>
+        <div id="workoutList" class="recent-list"></div>
+      </div>
+    </section>
+
+    <!-- DIET -->
+    <section class="panel hidden" id="panel-diet" data-panel="diet">
+      <div class="panel-head">
+        <h1 data-i18n="diet.heading">Diet</h1>
+        <div class="head-actions">
+          <button class="btn" id="btnManageFoods" data-i18n="diet.manageFoodsBtn">Manage foods & prices</button>
+          <button class="btn primary" id="btnAddMeal" data-i18n="diet.logMealBtn">+ Log meal</button>
+        </div>
+      </div>
+      <div class="stat-grid" id="dietStatGrid"></div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="diet.dailyCost">Daily cost</h2></div>
+          <div id="dietCostChart" class="chart-slot"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="diet.dailyCalories">Daily calories</h2></div>
+          <div id="dietKcalChart" class="chart-slot"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="diet.mealHistory">Meal history</h2></div>
+        <div id="mealList" class="recent-list"></div>
+      </div>
+    </section>
+
+    <!-- SUPPLEMENTS & MEDICATION -->
+    <section class="panel hidden" id="panel-supplements" data-panel="supplements">
+      <div class="panel-head">
+        <h1 data-i18n="supplements.heading">Supplements & medication</h1>
+        <button class="btn primary" id="btnManageSupplements" data-i18n="supplements.manageBtn">Manage supplements</button>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="supplements.checklistTitle">Today's checklist</h2></div>
+        <div id="supplementsChecklist" class="checklist"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="supplements.adherenceTitle">Adherence (last 14 days)</h2></div>
+        <div id="supplementsAdherenceChart" class="chart-slot"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="supplements.historyTitle">History</h2></div>
+        <div id="supplementsHistory" class="recent-list"></div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="panel hidden" id="panel-gallery" data-panel="gallery">
+      <div class="panel-head">
+        <h1 data-i18n="gallery.heading">Photos & notes</h1>
+        <button class="btn primary" id="btnAddPhoto" data-i18n="gallery.addEntryBtn">+ Add entry</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="panel hidden" id="panel-summary" data-panel="summary">
+      <div class="panel-head">
+        <h1 data-i18n="summary.heading">Monthly summary</h1>
+      </div>
+      <div class="month-nav">
+        <button class="icon-btn" id="summaryPrevMonth" data-i18n-title="summary.prevMonth" title="Previous month">‹</button>
+        <div class="month-nav-label" id="summaryMonthLabel"></div>
+        <button class="icon-btn" id="summaryNextMonth" data-i18n-title="summary.nextMonth" title="Next month">›</button>
+      </div>
+      <div class="stat-grid" id="summaryStatGrid"></div>
+      <div class="card" id="summaryMacrosCard">
+        <div class="card-head"><h2 data-i18n="summary.macrosTitle">Macros consumed this month</h2></div>
+        <div id="summaryMacros"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="summary.bodyMetrics">Body metrics</h2></div>
+        <div id="summaryBody" class="recent-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="summary.workouts">Workouts</h2></div>
+        <div id="summaryWorkouts" class="recent-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="summary.meals">Meals</h2></div>
+        <div id="summaryMeals" class="recent-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="summary.supplements">Supplements & medication</h2></div>
+        <div id="summarySupplements" class="recent-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="summary.gallery">Photos & notes</h2></div>
+        <div id="summaryGallery" class="recent-list"></div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="panel hidden" id="panel-settings" data-panel="settings">
+      <div class="panel-head">
+        <h1 data-i18n="settings.heading">Settings & backup</h1>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="settings.preferences">Preferences</h2></div>
+        <div class="field-row">
+          <div class="field" style="max-width:180px;">
+            <label data-i18n="settings.currency">Currency symbol</label>
+            <input type="text" id="fCurrency" maxlength="3" placeholder="$">
+          </div>
+          <div class="field" style="max-width:220px;">
+            <label data-i18n="settings.language">Language</label>
+            <select id="fLanguage" class="input">
+              <option value="en">English</option>
+              <option value="pt">Português</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="settings.backupTitle">Backup your data</h2></div>
+        <p class="hint" data-i18n="settings.backupHint">Everything is stored only in this browser. Export a backup regularly, especially before clearing browser data or switching devices.</p>
+        <div class="head-actions">
+          <button class="btn primary" id="btnExport" data-i18n="settings.exportBtn">Export backup (.json)</button>
+          <button class="btn" id="btnImport" data-i18n="settings.importBtn">Import backup</button>
+          <input type="file" id="importFile" accept="application/json" hidden />
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="settings.storageTitle">Storage usage</h2></div>
+        <p class="hint" id="storageUsage"></p>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-i18n="settings.dangerTitle">Danger zone</h2></div>
+        <p class="hint" data-i18n="settings.dangerHint">This permanently deletes all data in this browser. Export a backup first.</p>
+        <button class="btn danger" id="btnResetAll" data-i18n="settings.eraseBtn">Erase all data</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="modal-backdrop hidden" id="modalBackdrop">
+  <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
