@@ -33,6 +33,9 @@ const translations = {
     'body.emptyTable': 'No entries yet. Click "Log entry" to start.', 'body.emptyChart': 'No entries yet',
     'body.errInvalidWeight': 'Enter a valid weight', 'body.confirmDelete': 'Delete this body metrics entry?',
     'body.fatSuffix': '% fat',
+    'body.thMeasurements': 'Measurements', 'body.measurementsLabel': 'Measurements (optional, cm)',
+    'body.mWaist': 'Waist', 'body.mHip': 'Hip', 'body.mArm': 'Arm', 'body.mThigh': 'Thigh',
+    'body.mWaistShort': 'W', 'body.mHipShort': 'H', 'body.mArmShort': 'A', 'body.mThighShort': 'T',
 
     'workouts.heading': 'Workouts', 'workouts.manageExercisesBtn': 'Manage exercises', 'workouts.logWorkoutBtn': '+ Log workout',
     'workouts.progressByExercise': 'Progress by exercise', 'workouts.sessionHistory': 'Session history',
@@ -52,6 +55,13 @@ const translations = {
     'workouts.confirmDeleteSession': 'Delete this workout session?',
     'workouts.confirmDeleteExercise': 'Delete this exercise? Past workout entries referencing it will show as "(deleted exercise)".',
     'workouts.deletedExercise': '(deleted exercise)',
+    'workouts.metricMaxWeight': 'Max weight', 'workouts.metricE1rm': 'Est. 1RM',
+    'workouts.activitiesTitle': 'Activities', 'workouts.logActivityBtn': '+ Log activity',
+    'workouts.activityTypeLabel': 'Type', 'workouts.distanceLabel': 'Distance (km)',
+    'workouts.editActivityTitle': 'Edit activity', 'workouts.logActivityTitle': 'Log activity',
+    'workouts.confirmDeleteActivity': 'Delete this activity?', 'workouts.emptyActivities': 'No activities logged yet.',
+    'workouts.activityType.run': 'Running', 'workouts.activityType.bike': 'Cycling', 'workouts.activityType.walk': 'Walking',
+    'workouts.activityType.golf': 'Golf', 'workouts.activityType.other': 'Other',
     'workouts.managePlansBtn': 'Manage workout plans', 'workouts.managePlansTitle': 'Manage workout plans',
     'workouts.managePlansHint': "Group your regular exercises into a plan (e.g. \"Push day\", \"Leg day\") — pick it when logging a workout and its exercises fill in automatically.",
     'workouts.newPlanLabel': 'New plan name', 'workouts.newPlanPlaceholder': 'e.g. Push day, Leg day, Full body A',
@@ -85,6 +95,8 @@ const translations = {
     'diet.errEnterFoodName': 'Enter a food name', 'diet.errAddFood': 'Add at least one food with a quantity',
     'diet.savedToast': 'Meal saved', 'diet.confirmDeleteMeal': 'Delete this meal entry?',
     'diet.confirmDeleteFood': "Delete this food? Past meals referencing it will lose its cost/calorie data.",
+    'diet.planTitle': 'Current nutrition plan', 'diet.planTrainingKcal': 'Training day kcal', 'diet.planRestKcal': 'Rest day kcal',
+    'diet.planProtein': 'Protein target (g)', 'diet.planWeeklyGoal': 'Weekly weight goal (kg)', 'diet.planTargetWeight': 'Target weight (kg)',
 
     'gallery.heading': 'Photos & notes', 'gallery.addEntryBtn': '+ Add entry',
     'gallery.emptyGrid': 'No photos or notes yet. Add your first progress entry.', 'gallery.altPhoto': 'Progress photo',
@@ -119,6 +131,35 @@ const translations = {
     'supplements.confirmDeleteLog': 'Remove this logged dose?', 'supplements.statTakenToday': 'Taken today',
     'supplements.emptyAdherenceChart': 'Log doses to see your adherence trend',
     'supplements.newBtn': '+ Add new', 'supplements.doseUnitless': '',
+
+    'nav.health': 'Health',
+    'health.heading': 'Health', 'health.subtabClinical': 'Clinical summary', 'health.subtabLabs': 'Lab results',
+    'health.subtabCardio': 'Cardiovascular', 'health.subtabSleep': 'Sleep',
+    'health.clinicalTitle': 'Clinical summary', 'health.diagnoses': 'Diagnoses', 'health.evolution': 'Evolution',
+    'health.surgeries': 'Surgeries', 'health.currentMedication': 'Current medication', 'health.currentStatus': 'Current status',
+    'health.disabilityCert': 'Disability certificate', 'health.gastroIndications': "Doctor's indications",
+    'health.updatedOn': 'Updated {date}',
+    'health.manageLabTestsBtn': 'Manage tests', 'health.logLabResultsBtn': '+ Log results', 'health.labTrendTitle': 'Trend',
+    'health.noTestsOption': 'No tests yet', 'health.thTest': 'Test', 'health.thValue': 'Value', 'health.thRef': 'Reference',
+    'health.emptyLabTests': 'No tests yet. Add panels and tests to start tracking.', 'health.emptyLabTrend': 'No results logged for this test yet',
+    'health.lastResultsOn': 'Last results: {date}',
+    'health.manageLabTestsTitle': 'Manage lab panels & tests',
+    'health.manageLabTestsHint': 'Group tests into panels (e.g. "Blood count", "Metabolism"), each with its own unit and reference range — then log results by date.',
+    'health.panelsLabel': 'Panels', 'health.emptyPanels': 'No panels yet.', 'health.newPanelPlaceholder': 'e.g. Blood count, Metabolism, Renal function',
+    'health.addPanelBtn': '+ Add panel', 'health.testsLabel': 'Tests', 'health.emptyTests': 'No tests yet.',
+    'health.newTestPlaceholder': 'e.g. Hemoglobin, TSH, Vitamin D', 'health.addTestBtn': '+ Add test',
+    'health.testPanelLabel': 'Panel', 'health.testUnitLabel': 'Unit', 'health.testRefLabel': 'Reference range', 'health.testRefPlaceholder': 'e.g. 13.0-17.0',
+    'health.confirmDeletePanel': 'Delete this panel? Its tests and logged results will also be deleted.',
+    'health.confirmDeleteTest': 'Delete this test? Its logged results will also be deleted.',
+    'health.noTestsFirstTitle': 'Add a test first', 'health.noTestsFirstHint': 'You need at least one lab test set up before logging results.',
+    'health.logLabResultsTitle': 'Log lab results', 'health.flagLabel': '⚠', 'health.errNoValues': 'Enter at least one value',
+    'health.logCardioBtn': '+ Log month', 'health.restingHR': 'Resting heart rate', 'health.hrv': 'HRV (SDNN)', 'health.vo2max': 'VO2max',
+    'health.emptyCardio': 'No cardiovascular data logged yet.', 'health.editCardioTitle': 'Edit month', 'health.logCardioTitle': 'Log month',
+    'health.confirmDeleteCardio': 'Delete this entry?',
+    'health.logSleepBtn': '+ Log period', 'health.avgSleepChart': 'Average sleep', 'health.avgSleep': 'Avg. sleep',
+    'health.sleepRange': 'Range', 'health.deepSleep': 'Deep sleep', 'health.remSleep': 'REM sleep',
+    'health.emptySleep': 'No sleep data logged yet.', 'health.editSleepTitle': 'Edit period', 'health.logSleepTitle': 'Log period',
+    'health.confirmDeleteSleep': 'Delete this entry?',
 
     'settings.heading': 'Settings & backup', 'settings.preferences': 'Preferences', 'settings.currency': 'Currency symbol',
     'settings.language': 'Language', 'settings.backupTitle': 'Backup your data',
@@ -163,6 +204,9 @@ const translations = {
     'body.emptyTable': 'Ainda sem registos. Clica em "Novo registo" para começar.', 'body.emptyChart': 'Ainda sem registos',
     'body.errInvalidWeight': 'Introduz um peso válido', 'body.confirmDelete': 'Eliminar este registo de métricas corporais?',
     'body.fatSuffix': '% gordura',
+    'body.thMeasurements': 'Medidas', 'body.measurementsLabel': 'Medidas (opcional, cm)',
+    'body.mWaist': 'Cintura', 'body.mHip': 'Anca', 'body.mArm': 'Braço', 'body.mThigh': 'Coxa',
+    'body.mWaistShort': 'C', 'body.mHipShort': 'A', 'body.mArmShort': 'B', 'body.mThighShort': 'Co',
 
     'workouts.heading': 'Treinos', 'workouts.manageExercisesBtn': 'Gerir exercícios', 'workouts.logWorkoutBtn': '+ Novo treino',
     'workouts.progressByExercise': 'Progresso por exercício', 'workouts.sessionHistory': 'Histórico de sessões',
@@ -182,6 +226,13 @@ const translations = {
     'workouts.confirmDeleteSession': 'Eliminar esta sessão de treino?',
     'workouts.confirmDeleteExercise': 'Eliminar este exercício? Os treinos passados que o referenciam vão mostrar "(exercício eliminado)".',
     'workouts.deletedExercise': '(exercício eliminado)',
+    'workouts.metricMaxWeight': 'Peso máx', 'workouts.metricE1rm': '1RM estimado',
+    'workouts.activitiesTitle': 'Atividades', 'workouts.logActivityBtn': '+ Registar atividade',
+    'workouts.activityTypeLabel': 'Tipo', 'workouts.distanceLabel': 'Distância (km)',
+    'workouts.editActivityTitle': 'Editar atividade', 'workouts.logActivityTitle': 'Registar atividade',
+    'workouts.confirmDeleteActivity': 'Eliminar esta atividade?', 'workouts.emptyActivities': 'Ainda sem atividades registadas.',
+    'workouts.activityType.run': 'Corrida', 'workouts.activityType.bike': 'Ciclismo', 'workouts.activityType.walk': 'Caminhada',
+    'workouts.activityType.golf': 'Golf', 'workouts.activityType.other': 'Outro',
     'workouts.managePlansBtn': 'Gerir planos de treino', 'workouts.managePlansTitle': 'Gerir planos de treino',
     'workouts.managePlansHint': 'Agrupa os teus exercícios habituais num plano (ex: "Dia de peito", "Dia de pernas") — escolhe-o ao registar um treino e os exercícios preenchem-se sozinhos.',
     'workouts.newPlanLabel': 'Nome do novo plano', 'workouts.newPlanPlaceholder': 'ex: Dia de peito, Dia de pernas, Full body A',
@@ -215,6 +266,8 @@ const translations = {
     'diet.errEnterFoodName': 'Introduz o nome do alimento', 'diet.errAddFood': 'Adiciona pelo menos um alimento com quantidade',
     'diet.savedToast': 'Refeição guardada', 'diet.confirmDeleteMeal': 'Eliminar esta refeição?',
     'diet.confirmDeleteFood': 'Eliminar este alimento? As refeições passadas que o usam perdem os dados de custo/calorias.',
+    'diet.planTitle': 'Plano nutricional atual', 'diet.planTrainingKcal': 'Kcal em dia de treino', 'diet.planRestKcal': 'Kcal em dia de descanso',
+    'diet.planProtein': 'Meta de proteína (g)', 'diet.planWeeklyGoal': 'Meta semanal de peso (kg)', 'diet.planTargetWeight': 'Peso alvo (kg)',
 
     'gallery.heading': 'Fotos e notas', 'gallery.addEntryBtn': '+ Adicionar registo',
     'gallery.emptyGrid': 'Ainda sem fotos ou notas. Adiciona o teu primeiro registo de progresso.', 'gallery.altPhoto': 'Foto de progresso',
@@ -249,6 +302,35 @@ const translations = {
     'supplements.confirmDeleteLog': 'Remover esta dose registada?', 'supplements.statTakenToday': 'Tomados hoje',
     'supplements.emptyAdherenceChart': 'Regista doses para ver a tendência de adesão',
     'supplements.newBtn': '+ Adicionar novo', 'supplements.doseUnitless': '',
+
+    'nav.health': 'Saúde',
+    'health.heading': 'Saúde', 'health.subtabClinical': 'Resumo clínico', 'health.subtabLabs': 'Análises',
+    'health.subtabCardio': 'Cardiovascular', 'health.subtabSleep': 'Sono',
+    'health.clinicalTitle': 'Resumo clínico', 'health.diagnoses': 'Diagnósticos', 'health.evolution': 'Evolução',
+    'health.surgeries': 'Cirurgias', 'health.currentMedication': 'Medicação atual', 'health.currentStatus': 'Estado atual',
+    'health.disabilityCert': 'Atestado de incapacidade', 'health.gastroIndications': 'Indicações do médico',
+    'health.updatedOn': 'Atualizado a {date}',
+    'health.manageLabTestsBtn': 'Gerir parâmetros', 'health.logLabResultsBtn': '+ Registar análises', 'health.labTrendTitle': 'Tendência',
+    'health.noTestsOption': 'Ainda sem parâmetros', 'health.thTest': 'Parâmetro', 'health.thValue': 'Valor', 'health.thRef': 'Referência',
+    'health.emptyLabTests': 'Ainda sem parâmetros. Adiciona grupos e parâmetros para começar.', 'health.emptyLabTrend': 'Ainda sem resultados registados para este parâmetro',
+    'health.lastResultsOn': 'Últimos resultados: {date}',
+    'health.manageLabTestsTitle': 'Gerir grupos e parâmetros de análises',
+    'health.manageLabTestsHint': 'Agrupa os parâmetros em grupos (ex: "Hemograma", "Metabolismo"), cada um com a sua unidade e intervalo de referência — depois regista resultados por data.',
+    'health.panelsLabel': 'Grupos', 'health.emptyPanels': 'Ainda sem grupos.', 'health.newPanelPlaceholder': 'ex: Hemograma, Metabolismo, Função renal',
+    'health.addPanelBtn': '+ Adicionar grupo', 'health.testsLabel': 'Parâmetros', 'health.emptyTests': 'Ainda sem parâmetros.',
+    'health.newTestPlaceholder': 'ex: Hemoglobina, TSH, Vitamina D', 'health.addTestBtn': '+ Adicionar parâmetro',
+    'health.testPanelLabel': 'Grupo', 'health.testUnitLabel': 'Unidade', 'health.testRefLabel': 'Intervalo de referência', 'health.testRefPlaceholder': 'ex: 13,0-17,0',
+    'health.confirmDeletePanel': 'Eliminar este grupo? Os seus parâmetros e resultados registados também são eliminados.',
+    'health.confirmDeleteTest': 'Eliminar este parâmetro? Os resultados registados também são eliminados.',
+    'health.noTestsFirstTitle': 'Adiciona primeiro um parâmetro', 'health.noTestsFirstHint': 'Precisas de pelo menos um parâmetro de análise configurado antes de registar resultados.',
+    'health.logLabResultsTitle': 'Registar análises', 'health.flagLabel': '⚠', 'health.errNoValues': 'Introduz pelo menos um valor',
+    'health.logCardioBtn': '+ Registar mês', 'health.restingHR': 'Frequência cardíaca em repouso', 'health.hrv': 'HRV (SDNN)', 'health.vo2max': 'VO2max',
+    'health.emptyCardio': 'Ainda sem dados cardiovasculares registados.', 'health.editCardioTitle': 'Editar mês', 'health.logCardioTitle': 'Registar mês',
+    'health.confirmDeleteCardio': 'Eliminar este registo?',
+    'health.logSleepBtn': '+ Registar período', 'health.avgSleepChart': 'Sono médio', 'health.avgSleep': 'Sono médio',
+    'health.sleepRange': 'Amplitude', 'health.deepSleep': 'Sono profundo', 'health.remSleep': 'Sono REM',
+    'health.emptySleep': 'Ainda sem dados de sono registados.', 'health.editSleepTitle': 'Editar período', 'health.logSleepTitle': 'Registar período',
+    'health.confirmDeleteSleep': 'Eliminar este registo?',
 
     'settings.heading': 'Definições e cópia de segurança', 'settings.preferences': 'Preferências', 'settings.currency': 'Símbolo da moeda',
     'settings.language': 'Idioma', 'settings.backupTitle': 'Cópia de segurança dos dados',
@@ -293,6 +375,54 @@ function detectDefaultLanguage() {
   return (navigator.language || '').toLowerCase().startsWith('pt') ? 'pt' : 'en';
 }
 
+/* Default lab panel/test catalog — generic reference ranges only, no personal
+   values. Shipped as the out-of-the-box template; actual results are entered
+   by the user and never committed to source control. */
+const DEFAULT_LAB_PANELS = [
+  { id: 'p-intestinal', name: 'Função intestinal e inflamação' },
+  { id: 'p-hemograma', name: 'Hemograma' },
+  { id: 'p-ferro', name: 'Ferro e vitaminas' },
+  { id: 'p-metabolismo', name: 'Metabolismo' },
+  { id: 'p-renal', name: 'Função renal, hepática e tiroide' }
+];
+const DEFAULT_LAB_TESTS = [
+  { id: 't-calprotectina', panelId: 'p-intestinal', name: 'Calprotectina fecal', unit: 'µg/g', refRange: '<50 negativo' },
+  { id: 't-albumina', panelId: 'p-intestinal', name: 'Albumina sérica', unit: 'g/dl', refRange: '3,4-5,0' },
+  { id: 't-gamaglobulinas', panelId: 'p-intestinal', name: 'Gama-globulinas', unit: 'g/dl', refRange: '0,71-1,54' },
+
+  { id: 't-hemoglobina', panelId: 'p-hemograma', name: 'Hemoglobina', unit: 'g/dl', refRange: '13,0-17,0' },
+  { id: 't-eritrocitos', panelId: 'p-hemograma', name: 'Eritrócitos', unit: 'M/µl', refRange: '4,50-5,50' },
+  { id: 't-hematocrito', panelId: 'p-hemograma', name: 'Hematócrito', unit: '%', refRange: '40-50' },
+  { id: 't-leucocitos', panelId: 'p-hemograma', name: 'Leucócitos', unit: 'K/µl', refRange: '4,0-10,0' },
+  { id: 't-plaquetas', panelId: 'p-hemograma', name: 'Plaquetas', unit: 'K/µl', refRange: '150-400' },
+
+  { id: 't-ferritina', panelId: 'p-ferro', name: 'Ferritina', unit: 'ng/ml', refRange: '30-340' },
+  { id: 't-sideremia', panelId: 'p-ferro', name: 'Siderémia', unit: 'µg/dl', refRange: '65-175' },
+  { id: 't-ctff', panelId: 'p-ferro', name: 'CTFF', unit: 'µg/dl', refRange: '291-430' },
+  { id: 't-b12', panelId: 'p-ferro', name: 'Vitamina B12', unit: 'pg/ml', refRange: '211-911' },
+  { id: 't-folico', panelId: 'p-ferro', name: 'Ácido fólico', unit: 'ng/ml', refRange: '>5,4' },
+  { id: 't-vitd', panelId: 'p-ferro', name: '25-OH Vitamina D', unit: 'ng/ml', refRange: '30-100 suficiente' },
+
+  { id: 't-glicemia', panelId: 'p-metabolismo', name: 'Glicémia jejum', unit: 'mg/dL', refRange: '70-110' },
+  { id: 't-hba1c', panelId: 'p-metabolismo', name: 'HbA1c', unit: '%', refRange: '4,3-6,1' },
+  { id: 't-colesterol', panelId: 'p-metabolismo', name: 'Colesterol total', unit: 'mg/dL', refRange: '<190' },
+  { id: 't-ldl', panelId: 'p-metabolismo', name: 'LDL', unit: 'mg/dL', refRange: '<115' },
+  { id: 't-hdl', panelId: 'p-metabolismo', name: 'HDL', unit: 'mg/dL', refRange: '35-55' },
+  { id: 't-triglicéridos', panelId: 'p-metabolismo', name: 'Triglicéridos', unit: 'mg/dL', refRange: '<150' },
+  { id: 't-acidourico', panelId: 'p-metabolismo', name: 'Ácido úrico', unit: 'mg/dL', refRange: '3,7-9,2' },
+
+  { id: 't-creatinina', panelId: 'p-renal', name: 'Creatinina', unit: 'mg/dL', refRange: '0,70-1,30' },
+  { id: 't-ureia', panelId: 'p-renal', name: 'Ureia', unit: 'mg/dL', refRange: '<50' },
+  { id: 't-ast', panelId: 'p-renal', name: 'AST', unit: 'U/l', refRange: '<34' },
+  { id: 't-alt', panelId: 'p-renal', name: 'ALT', unit: 'U/l', refRange: '10-49' },
+  { id: 't-ggt', panelId: 'p-renal', name: 'GGT', unit: 'U/l', refRange: '<73' },
+  { id: 't-fosfalcalina', panelId: 'p-renal', name: 'Fosfatase alcalina', unit: 'U/l', refRange: '46-116' },
+  { id: 't-bilirrubina', panelId: 'p-renal', name: 'Bilirrubina total', unit: 'mg/dL', refRange: '0,30-1,20' },
+  { id: 't-tsh', panelId: 'p-renal', name: 'TSH', unit: 'mUI/l', refRange: '0,35-5,50' },
+  { id: 't-ft4', panelId: 'p-renal', name: 'FT4', unit: '', refRange: '0,8-1,76' },
+  { id: 't-ft3', panelId: 'p-renal', name: 'FT3', unit: '', refRange: '2,3-4,2' }
+];
+
 function defaultState() {
   const lang = detectDefaultLanguage();
   return {
@@ -305,7 +435,15 @@ function defaultState() {
     meals: [],           // {id, date, name, items:[{foodId, grams}], notes}
     gallery: [],          // {id, date, image, note}
     supplements: [],        // {id, name, type:'supplement'|'medication', dose, frequency, notes, active}
-    supplementLogs: []       // {id, date, supplementId}
+    supplementLogs: [],      // {id, date, supplementId}
+    clinical: { diagnoses: '', evolution: '', surgeries: '', currentMedication: '', currentStatus: '', disabilityCert: '', gastroIndications: '', updatedAt: null },
+    labPanels: DEFAULT_LAB_PANELS.map(p => Object.assign({}, p)),   // {id, name}
+    labTests: DEFAULT_LAB_TESTS.map(x => Object.assign({}, x)),      // {id, panelId, name, unit, refRange}
+    labResults: [],              // {id, testId, date, value, flagged, note}
+    cardioMetrics: [],            // {id, date, restingHR, hrv, vo2max}
+    sleepMetrics: [],               // {id, date, avgHours, minHours, maxHours, deepHours, remHours, awakeHours, note}
+    cardioSessions: [],              // {id, date, type, distanceKm, durationMin, note}
+    dietPlan: { trainingKcalMin: null, trainingKcalMax: null, restKcalMin: null, restKcalMax: null, proteinMin: null, proteinMax: null, weeklyGoalKg: null, targetWeight: null, notes: '', updatedAt: null }
   };
 }
 
@@ -633,6 +771,7 @@ function renderPanel(tab) {
   else if (tab === 'gallery') renderGallery();
   else if (tab === 'summary') renderSummary();
   else if (tab === 'supplements') renderSupplements();
+  else if (tab === 'health') renderHealth();
   else if (tab === 'settings') renderSettings();
 }
 
@@ -783,6 +922,16 @@ function emptyState(msg) {
 /* =========================================================
    BODY METRICS
    ========================================================= */
+function measurementsSummary(m) {
+  if (!m) return '—';
+  const parts = [];
+  if (m.waist != null) parts.push(t('body.mWaistShort') + ' ' + fmtNum(m.waist, 1));
+  if (m.hip != null) parts.push(t('body.mHipShort') + ' ' + fmtNum(m.hip, 1));
+  if (m.arm != null) parts.push(t('body.mArmShort') + ' ' + fmtNum(m.arm, 1));
+  if (m.thigh != null) parts.push(t('body.mThighShort') + ' ' + fmtNum(m.thigh, 1));
+  return parts.length ? parts.join(' · ') : '—';
+}
+
 function renderBody() {
   const sorted = [...state.bodyMetrics].sort(byDateAsc);
   renderLineChart(document.getElementById('bodyWeightChart'),
@@ -791,20 +940,21 @@ function renderBody() {
 
   const tbody = document.querySelector('#bodyTable tbody');
   const thead = document.querySelector('#bodyTable thead');
-  thead.innerHTML = `<tr><th>${t('body.thDate')}</th><th>${t('body.thWeight')}</th><th>${t('body.thBodyFat')}</th><th>${t('body.thNotes')}</th><th></th></tr>`;
+  thead.innerHTML = `<tr><th>${t('body.thDate')}</th><th>${t('body.thWeight')}</th><th>${t('body.thBodyFat')}</th><th>${t('body.thMeasurements')}</th><th>${t('body.thNotes')}</th><th></th></tr>`;
   const desc = [...state.bodyMetrics].sort(byDateDesc);
   tbody.innerHTML = desc.length ? desc.map(b => `
     <tr>
       <td>${fmtDate(b.date)}</td>
       <td class="num">${fmtNum(b.weight, 1)} kg</td>
       <td class="num">${b.bodyFat != null ? fmtNum(b.bodyFat, 1) + '%' : '—'}</td>
+      <td>${measurementsSummary(b.measurements)}</td>
       <td>${escapeHtml(b.notes || '')}</td>
       <td class="row-actions">
         <button class="icon-btn" data-edit-body="${b.id}" title="${t('common.edit')}">✎</button>
         <button class="icon-btn" data-del-body="${b.id}" title="${t('common.delete')}">🗑</button>
       </td>
     </tr>
-  `).join('') : `<tr><td colspan="5">${emptyState(t('body.emptyTable'))}</td></tr>`;
+  `).join('') : `<tr><td colspan="6">${emptyState(t('body.emptyTable'))}</td></tr>`;
 
   tbody.querySelectorAll('[data-edit-body]').forEach(b => b.addEventListener('click', () => openBodyForm(b.dataset.editBody)));
   tbody.querySelectorAll('[data-del-body]').forEach(b => b.addEventListener('click', () => {
@@ -819,11 +969,21 @@ document.getElementById('btnAddBody').addEventListener('click', () => openBodyFo
 
 function openBodyForm(id) {
   const existing = id ? state.bodyMetrics.find(b => b.id === id) : null;
+  const m = (existing && existing.measurements) || {};
   openModal(existing ? t('body.editTitle') : t('body.logTitle'), `
     <div class="field"><label>${t('common.date')}</label><input type="date" id="fDate" value="${existing ? existing.date : todayStr()}" max="${todayStr()}"></div>
     <div class="field-row">
       <div class="field"><label>${t('body.weightLabel')}</label><input type="number" step="0.1" id="fWeight" value="${existing ? existing.weight : ''}" placeholder="${t('body.weightPlaceholder')}"></div>
       <div class="field"><label>${t('body.bodyFatLabel')}</label><input type="number" step="0.1" id="fBodyFat" value="${existing && existing.bodyFat != null ? existing.bodyFat : ''}" placeholder="${t('body.bodyFatPlaceholder')}"></div>
+    </div>
+    <label class="section-label">${t('body.measurementsLabel')}</label>
+    <div class="field-row">
+      <div class="field"><label>${t('body.mWaist')}</label><input type="number" step="0.1" id="fWaist" value="${m.waist != null ? m.waist : ''}" placeholder="cm"></div>
+      <div class="field"><label>${t('body.mHip')}</label><input type="number" step="0.1" id="fHip" value="${m.hip != null ? m.hip : ''}" placeholder="cm"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>${t('body.mArm')}</label><input type="number" step="0.1" id="fArm" value="${m.arm != null ? m.arm : ''}" placeholder="cm"></div>
+      <div class="field"><label>${t('body.mThigh')}</label><input type="number" step="0.1" id="fThigh" value="${m.thigh != null ? m.thigh : ''}" placeholder="cm"></div>
     </div>
     <div class="field"><label>${t('common.notesOptional')}</label><textarea id="fNotes" placeholder="${t('body.notesPlaceholder')}">${existing ? escapeHtml(existing.notes || '') : ''}</textarea></div>
     <div class="modal-foot">
@@ -839,10 +999,12 @@ function openBodyForm(id) {
     const bodyFatRaw = document.getElementById('fBodyFat').value;
     const bodyFat = bodyFatRaw === '' ? null : parseFloat(bodyFatRaw);
     const notes = document.getElementById('fNotes').value.trim();
+    const num = id2 => { const v = document.getElementById(id2).value; return v === '' ? null : parseFloat(v); };
+    const measurements = { waist: num('fWaist'), hip: num('fHip'), arm: num('fArm'), thigh: num('fThigh') };
     if (existing) {
-      Object.assign(existing, { date, weight, bodyFat, notes });
+      Object.assign(existing, { date, weight, bodyFat, notes, measurements });
     } else {
-      state.bodyMetrics.push({ id: uid(), date, weight, bodyFat, notes, measurements: {} });
+      state.bodyMetrics.push({ id: uid(), date, weight, bodyFat, notes, measurements });
     }
     saveState();
     closeModal();
@@ -892,21 +1054,102 @@ function renderWorkouts() {
       saveState(); renderWorkouts();
     });
   }));
+
+  renderActivities();
 }
 
 document.getElementById('exerciseProgressSelect').addEventListener('change', e => renderExerciseProgressChart(e.target.value));
+document.getElementById('exerciseProgressMetric').addEventListener('change', () => {
+  renderExerciseProgressChart(document.getElementById('exerciseProgressSelect').value);
+});
+
+function epley1RM(weight, reps) {
+  return weight * (1 + reps / 30);
+}
 
 function renderExerciseProgressChart(exerciseId) {
   const el = document.getElementById('exerciseProgressChart');
   if (!exerciseId) { renderLineChart(el, [], { emptyText: t('workouts.emptyProgressChart') }); return; }
+  const metric = document.getElementById('exerciseProgressMetric').value;
   const points = [];
   [...state.workouts].sort(byDateAsc).forEach(w => {
     const entry = (w.entries || []).find(e => e.exerciseId === exerciseId);
     if (!entry || !entry.sets || !entry.sets.length) return;
-    const maxWeight = Math.max(...entry.sets.map(s => s.weight || 0));
-    points.push({ date: w.date, value: maxWeight });
+    const value = metric === 'e1rm'
+      ? Math.max(...entry.sets.map(s => epley1RM(s.weight || 0, s.reps || 0)))
+      : Math.max(...entry.sets.map(s => s.weight || 0));
+    points.push({ date: w.date, value });
   });
   renderLineChart(el, points, { color: 'var(--series-5)', unit: ' kg', emptyText: t('workouts.emptyExerciseSessions') });
+}
+
+/* ---- Cardio / other activities ---- */
+const ACTIVITY_TYPES = ['run', 'bike', 'walk', 'golf', 'other'];
+
+function renderActivities() {
+  const list = document.getElementById('activityList');
+  const desc = [...state.cardioSessions].sort(byDateDesc);
+  list.innerHTML = desc.length ? desc.map(a => {
+    const pace = a.type === 'run' && a.distanceKm && a.durationMin ? (a.durationMin / a.distanceKm) : null;
+    return `
+    <div class="list-item">
+      <div class="li-main">
+        <div class="li-title">${t('workouts.activityType.' + a.type)}${a.distanceKm ? ' · ' + fmtNum(a.distanceKm, 1) + ' km' : ''}${a.durationMin ? ' · ' + fmtNum(a.durationMin, 0) + ' min' : ''}</div>
+        <div class="li-sub">${fmtDateLong(a.date)}${pace ? ' · ' + fmtNum(pace, 1) + ' min/km' : ''}${a.note ? ' · ' + escapeHtml(a.note) : ''}</div>
+      </div>
+      <div class="li-right">
+        <button class="icon-btn" data-edit-activity="${a.id}" title="${t('common.edit')}">✎</button>
+        <button class="icon-btn" data-del-activity="${a.id}" title="${t('common.delete')}">🗑</button>
+      </div>
+    </div>
+  `;
+  }).join('') : emptyState(t('workouts.emptyActivities'));
+
+  list.querySelectorAll('[data-edit-activity]').forEach(b => b.addEventListener('click', () => openActivityForm(b.dataset.editActivity)));
+  list.querySelectorAll('[data-del-activity]').forEach(b => b.addEventListener('click', () => {
+    confirmAction(t('workouts.confirmDeleteActivity'), () => {
+      state.cardioSessions = state.cardioSessions.filter(x => x.id !== b.dataset.delActivity);
+      saveState(); renderActivities();
+    });
+  }));
+}
+
+document.getElementById('btnAddActivity').addEventListener('click', () => openActivityForm());
+
+function openActivityForm(id) {
+  const existing = id ? state.cardioSessions.find(a => a.id === id) : null;
+  openModal(existing ? t('workouts.editActivityTitle') : t('workouts.logActivityTitle'), `
+    <div class="field-row">
+      <div class="field"><label>${t('common.date')}</label><input type="date" id="fDate" value="${existing ? existing.date : todayStr()}" max="${todayStr()}"></div>
+      <div class="field"><label>${t('workouts.activityTypeLabel')}</label>
+        <select class="select" id="fType" style="width:100%;">
+          ${ACTIVITY_TYPES.map(tp => `<option value="${tp}" ${existing && existing.type === tp ? 'selected' : ''}>${t('workouts.activityType.' + tp)}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>${t('workouts.distanceLabel')}</label><input type="number" step="0.1" id="fDistance" value="${existing && existing.distanceKm != null ? existing.distanceKm : ''}" placeholder="km"></div>
+      <div class="field"><label>${t('workouts.durationLabel')}</label><input type="number" step="1" id="fDuration" value="${existing && existing.durationMin != null ? existing.durationMin : ''}" placeholder="min"></div>
+    </div>
+    <div class="field"><label>${t('common.notesOptional')}</label><textarea id="fNote">${existing ? escapeHtml(existing.note || '') : ''}</textarea></div>
+    <div class="modal-foot">
+      <button class="btn" id="cancelBtn">${t('common.cancel')}</button>
+      <button class="btn primary" id="saveBtn">${t('common.save')}</button>
+    </div>
+  `);
+  document.getElementById('cancelBtn').addEventListener('click', closeModal);
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    const date = document.getElementById('fDate').value || todayStr();
+    const type = document.getElementById('fType').value;
+    const num = id2 => { const v = document.getElementById(id2).value; return v === '' ? null : parseFloat(v); };
+    const data = { date, type, distanceKm: num('fDistance'), durationMin: num('fDuration'), note: document.getElementById('fNote').value.trim() };
+    if (existing) Object.assign(existing, data);
+    else state.cardioSessions.push(Object.assign({ id: uid() }, data));
+    saveState();
+    closeModal();
+    renderPanel(getActiveTab());
+    toast(t('common.saved'));
+  });
 }
 
 document.getElementById('btnManageExercises').addEventListener('click', openExerciseManager);
@@ -1262,6 +1505,8 @@ function renderDiet() {
     <div class="stat-tile"><div class="label">${t('diet.statFoodsTracked')}</div><div class="value">${state.foods.length}</div></div>
   `;
 
+  renderDietPlanForm();
+
   const costSeries = dailySeries(state.meals, last14, todayStr(), m => mealCost(m));
   renderLineChart(document.getElementById('dietCostChart'), costSeries, {
     color: 'var(--series-3)', formatY: v => state.settings.currency + fmtNum(v, 0), emptyText: t('diet.emptyCostChart')
@@ -1295,6 +1540,33 @@ function renderDiet() {
     });
   }));
 }
+
+function renderDietPlanForm() {
+  const p = state.dietPlan;
+  document.getElementById('fPlanTrainMin').value = p.trainingKcalMin != null ? p.trainingKcalMin : '';
+  document.getElementById('fPlanTrainMax').value = p.trainingKcalMax != null ? p.trainingKcalMax : '';
+  document.getElementById('fPlanRestMin').value = p.restKcalMin != null ? p.restKcalMin : '';
+  document.getElementById('fPlanRestMax').value = p.restKcalMax != null ? p.restKcalMax : '';
+  document.getElementById('fPlanProteinMin').value = p.proteinMin != null ? p.proteinMin : '';
+  document.getElementById('fPlanProteinMax').value = p.proteinMax != null ? p.proteinMax : '';
+  document.getElementById('fPlanWeeklyGoal').value = p.weeklyGoalKg != null ? p.weeklyGoalKg : '';
+  document.getElementById('fPlanTargetWeight').value = p.targetWeight != null ? p.targetWeight : '';
+  document.getElementById('fPlanNotes').value = p.notes || '';
+  document.getElementById('dietPlanUpdatedAt').textContent = p.updatedAt ? t('health.updatedOn', { date: fmtDateLong(p.updatedAt) }) : '';
+}
+document.getElementById('btnSaveDietPlan').addEventListener('click', () => {
+  const num = id => { const v = document.getElementById(id).value; return v === '' ? null : parseFloat(v); };
+  state.dietPlan = {
+    trainingKcalMin: num('fPlanTrainMin'), trainingKcalMax: num('fPlanTrainMax'),
+    restKcalMin: num('fPlanRestMin'), restKcalMax: num('fPlanRestMax'),
+    proteinMin: num('fPlanProteinMin'), proteinMax: num('fPlanProteinMax'),
+    weeklyGoalKg: num('fPlanWeeklyGoal'), targetWeight: num('fPlanTargetWeight'),
+    notes: document.getElementById('fPlanNotes').value.trim(), updatedAt: todayStr()
+  };
+  saveState();
+  renderDietPlanForm();
+  toast(t('common.saved'));
+});
 
 document.getElementById('btnManageFoods').addEventListener('click', renderFoodManagerModal);
 
@@ -1771,6 +2043,407 @@ function renderSupplementManagerModal() {
 }
 
 /* =========================================================
+   HEALTH — clinical summary, labs, cardio, sleep
+   ========================================================= */
+let healthSubtab = 'clinical';
+
+document.getElementById('healthSubtabbar').addEventListener('click', e => {
+  const btn = e.target.closest('.subtab-btn');
+  if (!btn) return;
+  healthSubtab = btn.dataset.subtab;
+  renderHealth();
+});
+
+function renderHealth() {
+  document.querySelectorAll('.subtab-btn').forEach(b => b.classList.toggle('active', b.dataset.subtab === healthSubtab));
+  document.querySelectorAll('.subpanel').forEach(p => p.classList.toggle('hidden', p.dataset.subpanel !== healthSubtab));
+  if (healthSubtab === 'clinical') renderClinical();
+  else if (healthSubtab === 'labs') renderLabs();
+  else if (healthSubtab === 'cardio') renderCardio();
+  else if (healthSubtab === 'sleep') renderSleep();
+}
+
+/* ---- Clinical summary ---- */
+function renderClinical() {
+  const c = state.clinical;
+  document.getElementById('fDiagnoses').value = c.diagnoses || '';
+  document.getElementById('fEvolution').value = c.evolution || '';
+  document.getElementById('fSurgeries').value = c.surgeries || '';
+  document.getElementById('fCurrentMedication').value = c.currentMedication || '';
+  document.getElementById('fCurrentStatus').value = c.currentStatus || '';
+  document.getElementById('fDisabilityCert').value = c.disabilityCert || '';
+  document.getElementById('fGastroIndications').value = c.gastroIndications || '';
+  document.getElementById('clinicalUpdatedAt').textContent = c.updatedAt ? t('health.updatedOn', { date: fmtDateLong(c.updatedAt) }) : '';
+}
+document.getElementById('btnSaveClinical').addEventListener('click', () => {
+  state.clinical = {
+    diagnoses: document.getElementById('fDiagnoses').value.trim(),
+    evolution: document.getElementById('fEvolution').value.trim(),
+    surgeries: document.getElementById('fSurgeries').value.trim(),
+    currentMedication: document.getElementById('fCurrentMedication').value.trim(),
+    currentStatus: document.getElementById('fCurrentStatus').value.trim(),
+    disabilityCert: document.getElementById('fDisabilityCert').value.trim(),
+    gastroIndications: document.getElementById('fGastroIndications').value.trim(),
+    updatedAt: todayStr()
+  };
+  saveState();
+  renderClinical();
+  toast(t('common.saved'));
+});
+
+/* ---- Lab results ---- */
+function panelById(id) { return state.labPanels.find(p => p.id === id); }
+function testById(id) { return state.labTests.find(x => x.id === id); }
+
+function renderLabs() {
+  const testsByPanel = state.labPanels.map(p => ({ panel: p, tests: state.labTests.filter(x => x.panelId === p.id) })).filter(g => g.tests.length);
+
+  const allDates = [...new Set(state.labResults.map(r => r.date))].sort();
+  const lastDate = allDates[allDates.length - 1];
+  document.getElementById('labsLastDate').textContent = lastDate ? t('health.lastResultsOn', { date: fmtDateLong(lastDate) }) : '';
+
+  const sel = document.getElementById('labTestSelect');
+  const prevVal = sel.value;
+  sel.innerHTML = testsByPanel.length
+    ? testsByPanel.map(g => `<optgroup label="${escapeHtml(g.panel.name)}">${g.tests.map(x => `<option value="${x.id}">${escapeHtml(x.name)}</option>`).join('')}</optgroup>`).join('')
+    : `<option value="">${t('health.noTestsOption')}</option>`;
+  if (prevVal && state.labTests.some(x => x.id === prevVal)) sel.value = prevVal;
+  renderLabTrendChart(sel.value);
+
+  const listEl = document.getElementById('labPanelsList');
+  listEl.innerHTML = testsByPanel.map(g => `
+    <div class="card">
+      <div class="card-head"><h2>${escapeHtml(g.panel.name)}</h2></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>${t('health.thTest')}</th><th>${t('health.thValue')}</th><th>${t('health.thRef')}</th></tr></thead>
+        <tbody>
+          ${g.tests.map(x => {
+            const latest = state.labResults.filter(r => r.testId === x.id).sort(byDateDesc)[0];
+            return `<tr>
+              <td>${escapeHtml(x.name)}</td>
+              <td class="num">${latest ? `${latest.flagged ? '⚠ ' : ''}${fmtNum(latest.value, 2)}${x.unit ? ' ' + escapeHtml(x.unit) : ''}` : '—'}</td>
+              <td class="num" style="color:var(--text-muted);">${escapeHtml(x.refRange || '—')}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table></div>
+    </div>
+  `).join('') || emptyState(t('health.emptyLabTests'));
+}
+
+document.getElementById('labTestSelect').addEventListener('change', e => renderLabTrendChart(e.target.value));
+
+function renderLabTrendChart(testId) {
+  const el = document.getElementById('labTrendChart');
+  if (!testId) { renderLineChart(el, [], { emptyText: t('health.emptyLabTrend') }); return; }
+  const test = testById(testId);
+  const points = state.labResults.filter(r => r.testId === testId).sort(byDateAsc).map(r => ({ date: r.date, value: r.value }));
+  renderLineChart(el, points, { color: 'var(--series-6)', unit: test && test.unit ? ' ' + test.unit : '', emptyText: t('health.emptyLabTrend') });
+}
+
+document.getElementById('btnManageLabTests').addEventListener('click', () => renderLabTestManagerModal());
+
+function renderLabTestManagerModal() {
+  const panelRows = state.labPanels.map(p => `
+    <div class="list-item">
+      <div class="li-main"><input type="text" class="input" data-panelname="${p.id}" value="${escapeHtml(p.name)}" style="border:none;background:transparent;padding:0;font-weight:600;"></div>
+      <div class="li-right"><button class="icon-btn" data-delpanel="${p.id}" title="${t('common.delete')}">🗑</button></div>
+    </div>
+  `).join('');
+
+  const testRows = state.labTests.map(x => `
+    <div class="exercise-block">
+      <div class="exercise-block-head">
+        <input type="text" class="input" data-testname="${x.id}" value="${escapeHtml(x.name)}" style="border:none;background:transparent;padding:0;font-weight:600;flex:1;min-width:0;">
+        <button class="icon-btn" data-deltest="${x.id}" title="${t('common.delete')}">🗑</button>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>${t('health.testPanelLabel')}</label>
+          <select class="select" data-testpanel="${x.id}" style="width:100%;">
+            ${state.labPanels.map(p => `<option value="${p.id}" ${p.id === x.panelId ? 'selected' : ''}>${escapeHtml(p.name)}</option>`).join('')}
+          </select>
+        </div>
+        <div class="field"><label>${t('health.testUnitLabel')}</label><input type="text" class="input" data-testunit="${x.id}" value="${escapeHtml(x.unit || '')}"></div>
+      </div>
+      <div class="field"><label>${t('health.testRefLabel')}</label><input type="text" class="input" data-testref="${x.id}" value="${escapeHtml(x.refRange || '')}" placeholder="${t('health.testRefPlaceholder')}"></div>
+    </div>
+  `).join('');
+
+  openModal(t('health.manageLabTestsTitle'), `
+    <p class="hint">${t('health.manageLabTestsHint')}</p>
+    <label class="section-label">${t('health.panelsLabel')}</label>
+    <div class="recent-list" id="panelList" style="margin-bottom:10px;">${panelRows || emptyState(t('health.emptyPanels'))}</div>
+    <div class="field-row" style="margin-bottom:10px;">
+      <div class="field" style="grid-column:1/3;"><input type="text" id="newPanelName" placeholder="${t('health.newPanelPlaceholder')}"></div>
+    </div>
+    <button class="btn" id="addPanelBtn" style="width:100%;margin-bottom:20px;">${t('health.addPanelBtn')}</button>
+
+    <label class="section-label">${t('health.testsLabel')}</label>
+    <div id="testList" style="margin-bottom:14px;">${testRows || emptyState(t('health.emptyTests'))}</div>
+    <div class="field"><input type="text" id="newTestName" placeholder="${t('health.newTestPlaceholder')}"></div>
+    <button class="btn primary" id="addTestBtn" style="width:100%;margin-top:8px;" ${!state.labPanels.length ? 'disabled' : ''}>${t('health.addTestBtn')}</button>
+
+    <div class="modal-foot">
+      <button class="btn" id="closeLabTestBtn">${t('common.done')}</button>
+    </div>
+  `, { keepScroll: true });
+
+  document.getElementById('closeLabTestBtn').addEventListener('click', () => { closeModal(); renderLabs(); });
+  document.getElementById('addPanelBtn').addEventListener('click', () => {
+    const input = document.getElementById('newPanelName');
+    const name = input.value.trim();
+    if (!name) { toast(t('workouts.errEnterName')); return; }
+    state.labPanels.push({ id: uid(), name });
+    saveState();
+    renderLabTestManagerModal();
+  });
+  document.getElementById('addTestBtn').addEventListener('click', () => {
+    if (!state.labPanels.length) return;
+    const input = document.getElementById('newTestName');
+    const name = input.value.trim();
+    if (!name) { toast(t('workouts.errEnterName')); return; }
+    state.labTests.push({ id: uid(), panelId: state.labPanels[0].id, name, unit: '', refRange: '' });
+    saveState();
+    renderLabTestManagerModal();
+  });
+  document.querySelectorAll('[data-panelname]').forEach(inp => inp.addEventListener('change', () => {
+    const p = panelById(inp.dataset.panelname); if (p && inp.value.trim()) { p.name = inp.value.trim(); saveState(); }
+  }));
+  document.querySelectorAll('[data-delpanel]').forEach(b => b.addEventListener('click', () => {
+    confirmAction(t('health.confirmDeletePanel'), () => {
+      const pid = b.dataset.delpanel;
+      state.labPanels = state.labPanels.filter(p => p.id !== pid);
+      const removedTestIds = new Set(state.labTests.filter(x => x.panelId === pid).map(x => x.id));
+      state.labTests = state.labTests.filter(x => x.panelId !== pid);
+      state.labResults = state.labResults.filter(r => !removedTestIds.has(r.testId));
+      saveState();
+      renderLabTestManagerModal();
+    });
+  }));
+  document.querySelectorAll('[data-testname]').forEach(inp => inp.addEventListener('change', () => {
+    const x = testById(inp.dataset.testname); if (x && inp.value.trim()) { x.name = inp.value.trim(); saveState(); }
+  }));
+  document.querySelectorAll('[data-testpanel]').forEach(sel => sel.addEventListener('change', () => {
+    const x = testById(sel.dataset.testpanel); if (x) { x.panelId = sel.value; saveState(); }
+  }));
+  document.querySelectorAll('[data-testunit]').forEach(inp => inp.addEventListener('change', () => {
+    const x = testById(inp.dataset.testunit); if (x) { x.unit = inp.value.trim(); saveState(); }
+  }));
+  document.querySelectorAll('[data-testref]').forEach(inp => inp.addEventListener('change', () => {
+    const x = testById(inp.dataset.testref); if (x) { x.refRange = inp.value.trim(); saveState(); }
+  }));
+  document.querySelectorAll('[data-deltest]').forEach(b => b.addEventListener('click', () => {
+    confirmAction(t('health.confirmDeleteTest'), () => {
+      state.labTests = state.labTests.filter(x => x.id !== b.dataset.deltest);
+      state.labResults = state.labResults.filter(r => r.testId !== b.dataset.deltest);
+      saveState();
+      renderLabTestManagerModal();
+    });
+  }));
+}
+
+document.getElementById('btnLogLabResults').addEventListener('click', () => openLabResultsForm());
+
+function openLabResultsForm() {
+  if (!state.labTests.length) {
+    openModal(t('health.noTestsFirstTitle'), `
+      <p class="hint">${t('health.noTestsFirstHint')}</p>
+      <div class="modal-foot"><button class="btn primary" id="goLabTestBtn">${t('health.manageLabTestsBtn')}</button></div>
+    `);
+    document.getElementById('goLabTestBtn').addEventListener('click', () => { closeModal(); renderLabTestManagerModal(); });
+    return;
+  }
+  const groups = state.labPanels.map(p => ({ panel: p, tests: state.labTests.filter(x => x.panelId === p.id) })).filter(g => g.tests.length);
+
+  openModal(t('health.logLabResultsTitle'), `
+    <div class="field"><label>${t('common.date')}</label><input type="date" id="fDate" value="${todayStr()}" max="${todayStr()}"></div>
+    ${groups.map(g => `
+      <label class="section-label" style="margin-top:14px;">${escapeHtml(g.panel.name)}</label>
+      ${g.tests.map(x => `
+        <div class="field-row" style="grid-template-columns: 1fr 60px; align-items:end;">
+          <div class="field" style="margin-bottom:8px;"><label>${escapeHtml(x.name)}${x.refRange ? ` <span style="font-weight:400;color:var(--text-muted);">(${escapeHtml(x.refRange)}${x.unit ? ' ' + escapeHtml(x.unit) : ''})</span>` : ''}</label>
+            <input type="number" step="any" class="input labVal" data-test="${x.id}" placeholder="${x.unit || ''}"></div>
+          <div class="field" style="margin-bottom:8px;"><label>${t('health.flagLabel')}</label>
+            <label style="display:flex;align-items:center;gap:4px;padding:9px 0;"><input type="checkbox" class="labFlag" data-test="${x.id}"></label></div>
+        </div>
+      `).join('')}
+    `).join('')}
+    <div class="modal-foot">
+      <button class="btn" id="cancelBtn">${t('common.cancel')}</button>
+      <button class="btn primary" id="saveBtn">${t('common.save')}</button>
+    </div>
+  `, { keepScroll: true });
+
+  document.getElementById('cancelBtn').addEventListener('click', closeModal);
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    const date = document.getElementById('fDate').value || todayStr();
+    let count = 0;
+    document.querySelectorAll('.labVal').forEach(inp => {
+      const testId = inp.dataset.test;
+      const v = inp.value;
+      if (v === '') return;
+      const flagged = document.querySelector(`.labFlag[data-test="${testId}"]`).checked;
+      const existingIdx = state.labResults.findIndex(r => r.testId === testId && r.date === date);
+      if (existingIdx >= 0) state.labResults[existingIdx] = Object.assign({}, state.labResults[existingIdx], { value: parseFloat(v), flagged });
+      else state.labResults.push({ id: uid(), testId, date, value: parseFloat(v), flagged, note: '' });
+      count++;
+    });
+    if (count === 0) { toast(t('health.errNoValues')); return; }
+    saveState();
+    closeModal();
+    renderPanel(getActiveTab());
+    toast(t('common.saved'));
+  });
+}
+
+/* ---- Cardiovascular ---- */
+function renderCardio() {
+  const sorted = [...state.cardioMetrics].sort(byDateAsc);
+  const latest = sorted[sorted.length - 1];
+
+  document.getElementById('cardioStatGrid').innerHTML = `
+    ${statTile(t('health.restingHR'), latest && latest.restingHR != null ? fmtNum(latest.restingHR, 1) + ' bpm' : '—', null)}
+    ${statTile(t('health.hrv'), latest && latest.hrv != null ? fmtNum(latest.hrv, 1) + ' ms' : '—', null)}
+    ${statTile(t('health.vo2max'), latest && latest.vo2max != null ? fmtNum(latest.vo2max, 1) : '—', null)}
+  `;
+  renderLineChart(document.getElementById('cardioHRChart'), sorted.map(m => ({ date: m.date, value: m.restingHR })), { color: 'var(--series-6)', unit: ' bpm', emptyText: t('health.emptyCardio') });
+  renderLineChart(document.getElementById('cardioHRVChart'), sorted.map(m => ({ date: m.date, value: m.hrv })), { color: 'var(--series-2)', unit: ' ms', emptyText: t('health.emptyCardio') });
+  renderLineChart(document.getElementById('cardioVO2Chart'), sorted.map(m => ({ date: m.date, value: m.vo2max })), { color: 'var(--series-1)', emptyText: t('health.emptyCardio') });
+
+  const listEl = document.getElementById('cardioHistory');
+  const desc = [...state.cardioMetrics].sort(byDateDesc);
+  listEl.innerHTML = desc.length ? desc.map(m => `
+    <div class="list-item">
+      <div class="li-main">
+        <div class="li-title">${m.restingHR != null ? fmtNum(m.restingHR, 1) + ' bpm' : '—'} · HRV ${m.hrv != null ? fmtNum(m.hrv, 1) : '—'} · VO2max ${m.vo2max != null ? fmtNum(m.vo2max, 1) : '—'}</div>
+        <div class="li-sub">${fmtDateLong(m.date)}</div>
+      </div>
+      <div class="li-right">
+        <button class="icon-btn" data-edit-cardio="${m.id}" title="${t('common.edit')}">✎</button>
+        <button class="icon-btn" data-del-cardio="${m.id}" title="${t('common.delete')}">🗑</button>
+      </div>
+    </div>
+  `).join('') : emptyState(t('health.emptyCardio'));
+
+  listEl.querySelectorAll('[data-edit-cardio]').forEach(b => b.addEventListener('click', () => openCardioForm(b.dataset.editCardio)));
+  listEl.querySelectorAll('[data-del-cardio]').forEach(b => b.addEventListener('click', () => {
+    confirmAction(t('health.confirmDeleteCardio'), () => {
+      state.cardioMetrics = state.cardioMetrics.filter(x => x.id !== b.dataset.delCardio);
+      saveState(); renderCardio();
+    });
+  }));
+}
+
+document.getElementById('btnLogCardio').addEventListener('click', () => openCardioForm());
+
+function openCardioForm(id, prefill) {
+  const existing = id ? state.cardioMetrics.find(m => m.id === id) : null;
+  const pre = prefill || {};
+  openModal(existing ? t('health.editCardioTitle') : t('health.logCardioTitle'), `
+    <div class="field"><label>${t('common.date')}</label><input type="date" id="fDate" value="${existing ? existing.date : (pre.date || todayStr())}" max="${todayStr()}"></div>
+    <div class="field"><label>${t('health.restingHR')}</label><input type="number" step="0.1" id="fHR" value="${existing && existing.restingHR != null ? existing.restingHR : (pre.restingHR != null ? pre.restingHR : '')}" placeholder="bpm"></div>
+    <div class="field"><label>${t('health.hrv')}</label><input type="number" step="0.1" id="fHRV" value="${existing && existing.hrv != null ? existing.hrv : (pre.hrv != null ? pre.hrv : '')}" placeholder="ms"></div>
+    <div class="field"><label>${t('health.vo2max')}</label><input type="number" step="0.1" id="fVO2" value="${existing && existing.vo2max != null ? existing.vo2max : (pre.vo2max != null ? pre.vo2max : '')}" placeholder="ml/kg/min"></div>
+    <div class="modal-foot">
+      <button class="btn" id="cancelBtn">${t('common.cancel')}</button>
+      <button class="btn primary" id="saveBtn">${t('common.save')}</button>
+    </div>
+  `);
+  document.getElementById('cancelBtn').addEventListener('click', closeModal);
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    const date = document.getElementById('fDate').value || todayStr();
+    const num = id => { const v = document.getElementById(id).value; return v === '' ? null : parseFloat(v); };
+    const data = { date, restingHR: num('fHR'), hrv: num('fHRV'), vo2max: num('fVO2') };
+    if (data.restingHR == null && data.hrv == null && data.vo2max == null) { toast(t('health.errNoValues')); return; }
+    if (existing) Object.assign(existing, data);
+    else state.cardioMetrics.push(Object.assign({ id: uid() }, data));
+    saveState();
+    closeModal();
+    renderPanel(getActiveTab());
+    toast(t('common.saved'));
+  });
+}
+
+/* ---- Sleep ---- */
+function renderSleep() {
+  const sorted = [...state.sleepMetrics].sort(byDateAsc);
+  const latest = sorted[sorted.length - 1];
+
+  document.getElementById('sleepStatGrid').innerHTML = `
+    ${statTile(t('health.avgSleep'), latest ? fmtNum(latest.avgHours, 1) + 'h' : '—', null)}
+    ${statTile(t('health.sleepRange'), latest && latest.minHours != null && latest.maxHours != null ? fmtNum(latest.minHours, 1) + '–' + fmtNum(latest.maxHours, 1) + 'h' : '—', null)}
+    ${statTile(t('health.deepSleep'), latest && latest.deepHours != null ? fmtNum(latest.deepHours, 1) + 'h' : '—', null)}
+    ${statTile(t('health.remSleep'), latest && latest.remHours != null ? fmtNum(latest.remHours, 1) + 'h' : '—', null)}
+  `;
+  renderLineChart(document.getElementById('sleepChart'), sorted.map(m => ({ date: m.date, value: m.avgHours })), { color: 'var(--series-5)', unit: 'h', emptyText: t('health.emptySleep') });
+
+  const listEl = document.getElementById('sleepHistory');
+  const desc = [...state.sleepMetrics].sort(byDateDesc);
+  listEl.innerHTML = desc.length ? desc.map(m => `
+    <div class="list-item">
+      <div class="li-main">
+        <div class="li-title">${fmtNum(m.avgHours, 1)}h</div>
+        <div class="li-sub">${fmtDateLong(m.date)}${m.note ? ' · ' + escapeHtml(m.note) : ''}</div>
+      </div>
+      <div class="li-right">
+        <button class="icon-btn" data-edit-sleep="${m.id}" title="${t('common.edit')}">✎</button>
+        <button class="icon-btn" data-del-sleep="${m.id}" title="${t('common.delete')}">🗑</button>
+      </div>
+    </div>
+  `).join('') : emptyState(t('health.emptySleep'));
+
+  listEl.querySelectorAll('[data-edit-sleep]').forEach(b => b.addEventListener('click', () => openSleepForm(b.dataset.editSleep)));
+  listEl.querySelectorAll('[data-del-sleep]').forEach(b => b.addEventListener('click', () => {
+    confirmAction(t('health.confirmDeleteSleep'), () => {
+      state.sleepMetrics = state.sleepMetrics.filter(x => x.id !== b.dataset.delSleep);
+      saveState(); renderSleep();
+    });
+  }));
+}
+
+document.getElementById('btnLogSleep').addEventListener('click', () => openSleepForm());
+
+function openSleepForm(id, prefill) {
+  const existing = id ? state.sleepMetrics.find(m => m.id === id) : null;
+  const pre = prefill || {};
+  openModal(existing ? t('health.editSleepTitle') : t('health.logSleepTitle'), `
+    <div class="field"><label>${t('common.date')}</label><input type="date" id="fDate" value="${existing ? existing.date : (pre.date || todayStr())}" max="${todayStr()}"></div>
+    <div class="field-row">
+      <div class="field"><label>${t('health.avgSleep')}</label><input type="number" step="0.1" id="fAvg" value="${existing ? existing.avgHours : (pre.avgHours != null ? pre.avgHours : '')}" placeholder="h"></div>
+      <div class="field"><label>${t('health.sleepRange')}</label>
+        <div style="display:flex;gap:6px;">
+          <input type="number" step="0.1" id="fMin" value="${existing && existing.minHours != null ? existing.minHours : (pre.minHours != null ? pre.minHours : '')}" placeholder="min">
+          <input type="number" step="0.1" id="fMax" value="${existing && existing.maxHours != null ? existing.maxHours : (pre.maxHours != null ? pre.maxHours : '')}" placeholder="max">
+        </div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>${t('health.deepSleep')}</label><input type="number" step="0.1" id="fDeep" value="${existing && existing.deepHours != null ? existing.deepHours : (pre.deepHours != null ? pre.deepHours : '')}" placeholder="h"></div>
+      <div class="field"><label>${t('health.remSleep')}</label><input type="number" step="0.1" id="fRem" value="${existing && existing.remHours != null ? existing.remHours : (pre.remHours != null ? pre.remHours : '')}" placeholder="h"></div>
+    </div>
+    <div class="field"><label>${t('common.notesOptional')}</label><textarea id="fNote">${existing ? escapeHtml(existing.note || '') : (pre.note ? escapeHtml(pre.note) : '')}</textarea></div>
+    <div class="modal-foot">
+      <button class="btn" id="cancelBtn">${t('common.cancel')}</button>
+      <button class="btn primary" id="saveBtn">${t('common.save')}</button>
+    </div>
+  `);
+  document.getElementById('cancelBtn').addEventListener('click', closeModal);
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    const date = document.getElementById('fDate').value || todayStr();
+    const avgHours = parseFloat(document.getElementById('fAvg').value);
+    if (isNaN(avgHours)) { toast(t('health.errNoValues')); return; }
+    const num = id => { const v = document.getElementById(id).value; return v === '' ? null : parseFloat(v); };
+    const data = { date, avgHours, minHours: num('fMin'), maxHours: num('fMax'), deepHours: num('fDeep'), remHours: num('fRem'), note: document.getElementById('fNote').value.trim() };
+    if (existing) Object.assign(existing, data);
+    else state.sleepMetrics.push(Object.assign({ id: uid() }, data));
+    saveState();
+    closeModal();
+    renderPanel(getActiveTab());
+    toast(t('common.saved'));
+  });
+}
+
+/* =========================================================
    MONTHLY SUMMARY
    ========================================================= */
 let summaryMonth = todayStr().slice(0, 7); // 'YYYY-MM'
@@ -2006,9 +2679,40 @@ document.getElementById('btnResetAll').addEventListener('click', () => {
 });
 
 /* =========================================================
+   URL QUICK-LOG (from iOS Shortcuts, e.g. reading Apple Health)
+   Recognized query params:
+     ?log=cardio&date=YYYY-MM-DD&hr=55&hrv=52&vo2=50
+     ?log=sleep&date=YYYY-MM-DD&avg=6.8&min=5.2&max=8.1&deep=1.2&rem=1.8
+   Opens the matching form pre-filled — nothing is saved until the user
+   taps Save, same as any other entry in the app.
+   ========================================================= */
+function handleUrlQuickLog() {
+  const params = new URLSearchParams(location.search);
+  const kind = params.get('log');
+  if (kind !== 'cardio' && kind !== 'sleep') return;
+
+  const num = key => { const v = params.get(key); if (v === null || v === '') return null; const n = parseFloat(v); return isNaN(n) ? null : n; };
+  const date = params.get('date') || undefined;
+
+  // Clean the URL so a refresh or re-share doesn't replay the same values.
+  history.replaceState(null, '', location.pathname);
+
+  switchTab('health');
+  healthSubtab = kind === 'cardio' ? 'cardio' : 'sleep';
+  renderHealth();
+
+  if (kind === 'cardio') {
+    openCardioForm(null, { date, restingHR: num('hr'), hrv: num('hrv'), vo2max: num('vo2') });
+  } else {
+    openSleepForm(null, { date, avgHours: num('avg'), minHours: num('min'), maxHours: num('max'), deepHours: num('deep'), remHours: num('rem') });
+  }
+}
+
+/* =========================================================
    INIT
    ========================================================= */
 applyTheme();
 applyStaticI18n();
 renderPanel('dashboard');
 updateStorageUsage();
+handleUrlQuickLog();

@@ -51,6 +51,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="3"/><path d="M4 13h16"/><path d="M9 4h6a2 2 0 012 2v4H7V6a2 2 0 012-2z"/></svg>
       <span data-i18n="nav.supplements">Supplements</span>
     </button>
+    <button class="tab-btn" data-tab="health">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/><path d="M8 12h2l1.5-3L13 15l1.5-3H16"/></svg>
+      <span data-i18n="nav.health">Health</span>
+    </button>
     <button class="tab-btn" data-tab="gallery">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
       <span data-i18n="nav.photos">Photos</span>
@@ -120,13 +124,26 @@
       <div class="card">
         <div class="card-head">
           <h2 data-i18n="workouts.progressByExercise">Progress by exercise</h2>
-          <select id="exerciseProgressSelect" class="select"></select>
+          <div class="head-actions">
+            <select id="exerciseProgressSelect" class="select"></select>
+            <select id="exerciseProgressMetric" class="select">
+              <option value="max" data-i18n="workouts.metricMaxWeight">Max weight</option>
+              <option value="e1rm" data-i18n="workouts.metricE1rm">Est. 1RM</option>
+            </select>
+          </div>
         </div>
         <div id="exerciseProgressChart" class="chart-slot"></div>
       </div>
       <div class="card">
         <div class="card-head"><h2 data-i18n="workouts.sessionHistory">Session history</h2></div>
         <div id="workoutList" class="recent-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2 data-i18n="workouts.activitiesTitle">Activities</h2>
+          <button class="btn small" id="btnAddActivity" data-i18n="workouts.logActivityBtn">+ Log activity</button>
+        </div>
+        <div id="activityList" class="recent-list"></div>
       </div>
     </section>
 
@@ -140,6 +157,29 @@
         </div>
       </div>
       <div class="stat-grid" id="dietStatGrid"></div>
+      <div class="card">
+        <div class="card-head">
+          <h2 data-i18n="diet.planTitle">Current nutrition plan</h2>
+          <span class="hint-sm" id="dietPlanUpdatedAt"></span>
+        </div>
+        <div class="field-row">
+          <div class="field"><label data-i18n="diet.planTrainingKcal">Training day kcal</label>
+            <div style="display:flex;gap:6px;"><input type="number" class="input" id="fPlanTrainMin" placeholder="min"><input type="number" class="input" id="fPlanTrainMax" placeholder="max"></div>
+          </div>
+          <div class="field"><label data-i18n="diet.planRestKcal">Rest day kcal</label>
+            <div style="display:flex;gap:6px;"><input type="number" class="input" id="fPlanRestMin" placeholder="min"><input type="number" class="input" id="fPlanRestMax" placeholder="max"></div>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label data-i18n="diet.planProtein">Protein target (g)</label>
+            <div style="display:flex;gap:6px;"><input type="number" class="input" id="fPlanProteinMin" placeholder="min"><input type="number" class="input" id="fPlanProteinMax" placeholder="max"></div>
+          </div>
+          <div class="field"><label data-i18n="diet.planWeeklyGoal">Weekly weight goal (kg)</label><input type="number" step="0.1" class="input" id="fPlanWeeklyGoal"></div>
+        </div>
+        <div class="field"><label data-i18n="diet.planTargetWeight">Target weight (kg)</label><input type="number" step="0.1" class="input" id="fPlanTargetWeight"></div>
+        <div class="field"><label data-i18n="common.notesOptional">Notes (optional)</label><textarea id="fPlanNotes"></textarea></div>
+        <button class="btn primary" id="btnSaveDietPlan" data-i18n="common.save" style="width:100%;">Save</button>
+      </div>
       <div class="card-grid">
         <div class="card">
           <div class="card-head"><h2 data-i18n="diet.dailyCost">Daily cost</h2></div>
@@ -173,6 +213,98 @@
       <div class="card">
         <div class="card-head"><h2 data-i18n="supplements.historyTitle">History</h2></div>
         <div id="supplementsHistory" class="recent-list"></div>
+      </div>
+    </section>
+
+    <!-- HEALTH -->
+    <section class="panel hidden" id="panel-health" data-panel="health">
+      <div class="panel-head">
+        <h1 data-i18n="health.heading">Health</h1>
+      </div>
+      <div class="subtabbar" id="healthSubtabbar">
+        <button class="subtab-btn active" data-subtab="clinical" data-i18n="health.subtabClinical">Clinical summary</button>
+        <button class="subtab-btn" data-subtab="labs" data-i18n="health.subtabLabs">Lab results</button>
+        <button class="subtab-btn" data-subtab="cardio" data-i18n="health.subtabCardio">Cardiovascular</button>
+        <button class="subtab-btn" data-subtab="sleep" data-i18n="health.subtabSleep">Sleep</button>
+      </div>
+
+      <!-- Clinical summary -->
+      <div class="subpanel" id="subpanel-clinical" data-subpanel="clinical">
+        <div class="card">
+          <div class="card-head">
+            <h2 data-i18n="health.clinicalTitle">Clinical summary</h2>
+            <span class="hint-sm" id="clinicalUpdatedAt"></span>
+          </div>
+          <div class="field"><label data-i18n="health.diagnoses">Diagnoses</label><textarea id="fDiagnoses"></textarea></div>
+          <div class="field"><label data-i18n="health.evolution">Evolution</label><textarea id="fEvolution"></textarea></div>
+          <div class="field"><label data-i18n="health.surgeries">Surgeries</label><textarea id="fSurgeries"></textarea></div>
+          <div class="field"><label data-i18n="health.currentMedication">Current medication</label><textarea id="fCurrentMedication"></textarea></div>
+          <div class="field"><label data-i18n="health.currentStatus">Current status</label><textarea id="fCurrentStatus"></textarea></div>
+          <div class="field"><label data-i18n="health.disabilityCert">Disability certificate</label><textarea id="fDisabilityCert"></textarea></div>
+          <div class="field"><label data-i18n="health.gastroIndications">Doctor's indications</label><textarea id="fGastroIndications"></textarea></div>
+          <button class="btn primary" id="btnSaveClinical" data-i18n="common.save" style="width:100%;">Save</button>
+        </div>
+      </div>
+
+      <!-- Lab results -->
+      <div class="subpanel hidden" id="subpanel-labs" data-subpanel="labs">
+        <div class="panel-head" style="margin-bottom:12px;">
+          <p class="sub" id="labsLastDate"></p>
+          <div class="head-actions">
+            <button class="btn" id="btnManageLabTests" data-i18n="health.manageLabTestsBtn">Manage tests</button>
+            <button class="btn primary" id="btnLogLabResults" data-i18n="health.logLabResultsBtn">+ Log results</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h2 data-i18n="health.labTrendTitle">Trend</h2>
+            <select id="labTestSelect" class="select"></select>
+          </div>
+          <div id="labTrendChart" class="chart-slot"></div>
+        </div>
+        <div id="labPanelsList"></div>
+      </div>
+
+      <!-- Cardiovascular -->
+      <div class="subpanel hidden" id="subpanel-cardio" data-subpanel="cardio">
+        <div class="panel-head" style="margin-bottom:12px;">
+          <span></span>
+          <button class="btn primary" id="btnLogCardio" data-i18n="health.logCardioBtn">+ Log month</button>
+        </div>
+        <div class="stat-grid" id="cardioStatGrid"></div>
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="health.restingHR">Resting heart rate</h2></div>
+          <div id="cardioHRChart" class="chart-slot"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="health.hrv">HRV (SDNN)</h2></div>
+          <div id="cardioHRVChart" class="chart-slot"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="health.vo2max">VO2max</h2></div>
+          <div id="cardioVO2Chart" class="chart-slot"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="body.history">History</h2></div>
+          <div id="cardioHistory" class="recent-list"></div>
+        </div>
+      </div>
+
+      <!-- Sleep -->
+      <div class="subpanel hidden" id="subpanel-sleep" data-subpanel="sleep">
+        <div class="panel-head" style="margin-bottom:12px;">
+          <span></span>
+          <button class="btn primary" id="btnLogSleep" data-i18n="health.logSleepBtn">+ Log period</button>
+        </div>
+        <div class="stat-grid" id="sleepStatGrid"></div>
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="health.avgSleepChart">Average sleep</h2></div>
+          <div id="sleepChart" class="chart-slot"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-i18n="body.history">History</h2></div>
+          <div id="sleepHistory" class="recent-list"></div>
+        </div>
       </div>
     </section>
 
